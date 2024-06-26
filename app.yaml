@@ -1,0 +1,13 @@
+runtime: nodejs18
+
+handlers:
+- url: /
+  static_files: dist/cohenkazaz-website/index.html
+  upload: dist/cohenkazaz-website/index.html
+
+- url: /
+  static_dir: dist/cohenkazaz-website
+
+- url: /(.+)
+  static_files: dist/cohenkazaz-website/\1
+  upload: dist/cohenkazaz-website/.*

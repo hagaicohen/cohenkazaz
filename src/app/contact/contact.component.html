@@ -1,0 +1,39 @@
+<div class="contact-content">
+    <h1>צור קשר</h1>
+    <div class="contact-details">
+      <p><strong>כתובת:</strong>רחוב חשוון 10, קומה ג' (מתחם פבליקו), קִרְיַת גת.</p>
+      <p><strong>טלפון:</strong> 052-6706744 (חגי), 054-694-9137 (עפרה)</p>
+      <p><strong>דוא"ל:</strong> <a href="mailto:office@cohen-kazaz.law">office@cohen-kazaz.law</a></p>
+      <p><strong>שעות פעילות:</strong> ימים א - ה מ-09:00 עד 18:00</p>
+      <p><strong>פייסבוק:</strong> <a href="https://www.facebook.com/profile.php?id=61560157382416" target="_blank">דף הפייסבוק שלנו</a></p>
+    </div>
+    <div class="business-cards">
+      <img src="assets/images/hagai-card.png" alt="Hagai Business Card" class="business-card">
+      <img src="assets/images/ofra-card.png" alt="Ofra Business Card" class="business-card">
+    </div>
+    <h2>טופס יצירת קשר</h2>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">שם מלא</label>
+        <input type="text" id="name" formControlName="name">
+        <div *ngIf="contactForm.get('name')!.invalid && contactForm.get('name')!.touched">שדה זה הוא חובה</div>
+      </div>
+      <div class="form-group">
+        <label for="phone">טלפון</label>
+        <input type="text" id="phone" formControlName="phone">
+        <div *ngIf="contactForm.get('phone')!.invalid && contactForm.get('phone')!.touched">שדה זה הוא חובה</div>
+      </div>
+      <div class="form-group">
+        <label for="email">דוא"ל</label>
+        <input type="email" id="email" formControlName="email">
+        <div *ngIf="contactForm.get('email')!.invalid && contactForm.get('email')!.touched">הכנס דוא"ל תקין</div>
+      </div>
+      <div class="form-group">
+        <label for="message">הודעה</label>
+        <textarea id="message" formControlName="message"></textarea>
+        <div *ngIf="contactForm.get('message')!.invalid && contactForm.get('message')!.touched">שדה זה הוא חובה</div>
+      </div>
+      <button type="submit" [disabled]="!contactForm.valid">שלח</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,86 @@
+.about-content {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  direction: rtl; /* כיוון הטקסט מימין לשמאל */
+  text-align: right; /* יישור הטקסט לימין */
+}
+
+.about-content h1 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  font-size: 1.2em;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify; /* יישור טקסט למצב Justify */
+}
+
+.lawyer-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px; /* מרווח בין האלמנטים */
+  position: relative; /* נדרש עבור הקו המבדיל */
+}
+
+.lawyer {
+  flex: 1 1 45%; /* מאפשר לשני עורכי הדין להיות זה לצד זו בתצוגה רגילה */
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px; /* מרווח פנימי */
+}
+
+.lawyer h2 {
+  font-size: 1.5em;
+  color: #444;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.lawyer p {
+  font-size: 1.2em;
+  color: #555;
+  line-height: 1.6;
+  text-align: justify; /* יישור טקסט למצב Justify */
+}
+
+.lawyer-photo {
+  width: 350px; /* גודל קבוע לתמונה */
+  height: 350px; /* גודל קבוע לתמונה */
+  border-radius: 50%; /* עיגול */
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* קו מבדיל בין שני עורכי הדין */
+.lawyer-info::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .lawyer-info {
+      flex-direction: column; /* בתצוגת מובייל עורכי הדין יהיו אחד מעל השני */
+  }
+
+  .lawyer {
+      flex: 1 1 100%; /* התפרסות על כל רוחב הקונטיינר */
+  }
+
+  /* הסרת הקו המבדיל במובייל */
+  .lawyer-info::after {
+      display: none;
+  }
+}

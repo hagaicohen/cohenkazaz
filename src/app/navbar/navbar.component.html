@@ -1,0 +1,20 @@
+<nav class="navbar">
+    <img src="assets/images/logo2.jpg" 
+         alt="Logo" 
+         class="nav-logo" 
+         style="border-radius: 50%;"
+         [ngStyle]="{'visibility': menuOpen ? 'hidden' :'visible'}"
+    >
+    <ul [ngClass]="{'nav-links': true, 'nav-active': menuOpen}" style="margin-right: 160px;">
+      <li><a href="#" (click)="onSectionChange('home')">בית</a></li>
+      <li><a href="#" (click)="onSectionChange('about')">אודות</a></li>
+      <li><a href="#" (click)="onSectionChange('services')">שירותים</a></li>
+      <li><a href="#" (click)="onSectionChange('contact')">צור קשר</a></li>
+    </ul>
+    <div class="burger" (click)="toggleBurger()" [class.toggle]="menuOpen">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+  

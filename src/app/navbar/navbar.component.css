@@ -1,0 +1,120 @@
+/* Navbar styles */
+.navbar {
+    position: fixed; /* הגדרת המיקום כ-fixed */
+    top: 0;
+    width: 100%;
+    max-width: 1326px;
+    margin: auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #C4AA7A;
+    padding: 0 20px;
+    z-index: 1000; /* כדי לוודא שהוא יהיה מעל תוכן אחר */
+  }
+  
+  .nav-logo {
+    width: 160px;
+    height: 160px;
+    margin-top: 120px;
+    margin-left: 20px;
+    z-index: 1;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    direction: rtl;
+  }
+  
+  .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+    transition: color 0.3s; /* מעבר חלק בצבע */
+  }
+  
+  .nav-links a:hover, .nav-links a.active {
+    color: #ffcc00; /* צבע הקישור ב-hover או כאשר הוא נבחר */
+  }
+  
+  .burger {
+    display: none;
+    cursor: pointer;
+    margin-right: 20px; /* דחיפת סמליל ההמבורגר פנימה */
+  }
+  
+  .burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .burger {
+      display: block;
+      margin-right: 20px; /* דחיפת סמליל ההמבורגר פנימה במובייל */
+      width: 50px;
+    }
+    .nav-links.nav-active {
+        display: flex;
+    }
+    .nav-logo {
+      width: 80px;
+      height: 80px;
+      margin-top: 60px;
+      margin-left: 10px;
+      z-index: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #C4AA7A;
+    }
+  
+    .nav-links.nav-active {
+      display: flex;
+    }
+  
+    .nav-links li {
+      text-align: center;
+      margin: 10px 0;
+    }
+  
+    .burger {
+      display: block;
+    }
+  
+    .burger.toggle .line1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+  
+    .burger.toggle .line2 {
+      opacity: 0;
+    }
+  
+    .burger.toggle .line3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+  

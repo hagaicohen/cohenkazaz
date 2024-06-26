@@ -1,0 +1,40 @@
+.home-content {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    direction: rtl; /* כיוון הטקסט מימין לשמאל */
+    text-align: right; /* יישור הטקסט לימין */
+  }
+  
+  .home-content h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .home-content p {
+    font-size: 1.2em;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .home-content h2 {
+    font-size: 1.5em;
+    color: #444;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .home-content ul {
+    list-style-type: disc;
+    margin-right: 20px; /* מיקום הרשימה */
+  }
+  
+  .home-content ul li {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
