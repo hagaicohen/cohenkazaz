@@ -89,5 +89,6 @@
 
   .lawyer-photo {
     max-width: 200px; /* גודל מקסימלי מותאם לתצוגת מובייל */
+    height: auto !important;
   }
 }
