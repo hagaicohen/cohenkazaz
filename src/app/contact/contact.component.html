@@ -6,60 +6,24 @@
     <p><strong>דוא"ל:</strong> <a href="mailto:office@cohenkazaz.law">office@cohenkazaz.law</a></p>
     <p><strong>שעות פעילות:</strong> ימים א - ה מ-09:00 עד 18:00</p>
     <p><strong>פייסבוק:</strong> <a href="https://www.facebook.com/profile.php?id=61560157382416" target="_blank">דף הפייסבוק שלנו</a></p>
-    <!--<p><strong>וואטסאפ:</strong>
-      <span class="contact-item">
-        <a href="https://wa.me/972526706744" target="_blank">
-          <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp Icon" class="contact-icon"> 052-6706744 (חגי)
-        </a>
-      </span>
-      <span class="contact-item">
-        <a href="https://wa.me/972546949137" target="_blank">
-          <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp Icon" class="contact-icon"> 054-694-9137 (עפרה)
-        </a>
-      </span>
-    </p>-->
-    <div style="width: 100%;height: 25px;display:flex">
-      <div style="margin-top:-3px">
-        <strong style="font-size:1.2em;color: #666;">וואטסאפ:</strong>
+    <div style="width: 100%; height: 25px; display: flex;">
+      <div style="margin-top: -3px;">
+        <strong style="font-size: 1.2em; color: #666;">וואטסאפ:</strong>
       </div>
-      <div style="margin-right: 3px;cursor:pointer">
+      <div style="margin-right: 3px; cursor: pointer;">
         <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp Icon" class="contact-icon" (click)="sendWhatsApp('972526706744')">
       </div>
-      <div style="font-size: 1.2em;color:#007bff;margin-top:-2px;cursor: pointer;margin-right: -5px;" (click)="sendWhatsApp('972526706744')">(חגי)</div>
-      <div style="margin-right: 15px;cursor:pointer">
+      <div style="font-size: 1.2em; color: #007bff; margin-top: -2px; cursor: pointer; margin-right: -5px;" (click)="sendWhatsApp('972526706744')">(חגי)</div>
+      <div style="margin-right: 15px; cursor: pointer;">
         <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp Icon" class="contact-icon" (click)="sendWhatsApp('972546949137')">
       </div>
-      <div style="font-size: 1.2em;color:#007bff;margin-top:-2px;cursor: pointer;margin-right: -5px" (click)="sendWhatsApp('972546949137')">
+      <div style="font-size: 1.2em; color: #007bff; margin-top: -2px; cursor: pointer; margin-right: -5px;" (click)="sendWhatsApp('972546949137')">
         (עפרה)
       </div>
     </div>
   </div>
-  <div class="business-cards" style="margin-top:10px">
+  <div class="business-cards" style="margin-top: 10px;">
     <img src="assets/images/hagai-card.png" alt="Hagai Business Card" class="business-card">
     <img src="assets/images/ofra-card.png" alt="Ofra Business Card" class="business-card">
   </div>
-  <!--<h2>טופס יצירת קשר</h2>
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">שם מלא</label>
-      <input type="text" id="name" formControlName="name">
-      <div *ngIf="contactForm.get('name')!.invalid && contactForm.get('name')!.touched">שדה זה הוא חובה</div>
-    </div>
-    <div class="form-group">
-      <label for="phone">טלפון</label>
-      <input type="text" id="phone" formControlName="phone">
-      <div *ngIf="contactForm.get('phone')!.invalid && contactForm.get('phone')!.touched">שדה זה הוא חובה</div>
-    </div>
-    <div class="form-group">
-      <label for="email">דוא"ל</label>
-      <input type="email" id="email" formControlName="email">
-      <div *ngIf="contactForm.get('email')!.invalid && contactForm.get('email')!.touched">הכנס דוא"ל תקין</div>
-    </div>
-    <div class="form-group">
-      <label for="message">הודעה</label>
-      <textarea id="message" formControlName="message"></textarea>
-      <div *ngIf="contactForm.get('message')!.invalid && contactForm.get('message')!.touched">שדה זה הוא חובה</div>
-    </div>
-    <button type="submit" [disabled]="!contactForm.valid">שלח</button>
-  </form>-->
 </div>
