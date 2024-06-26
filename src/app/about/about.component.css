@@ -54,7 +54,7 @@
 .lawyer-photo {
   width: 100%; /* רוחב מלא בקונטיינר */
   max-width: 300px; /* הגבלת רוחב מקסימלי */
-  height: auto; /* שמירה על יחס גובה-רוחב */
+  height: 300px; /* שמירה על יחס גובה-רוחב */
   border-radius: 50%; /* עיגול */
   object-fit: cover;
   margin-bottom: 10px;
