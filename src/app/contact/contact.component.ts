@@ -24,4 +24,8 @@ export class ContactComponent {
       // ניתן להוסיף כאן טיפול במשלוח הטופס, כגון שליחה לשרת
     }
   }
+
+  sendWhatsApp(phoneNumber: string) {
+    window.open(`https://wa.me/${phoneNumber}`, '_blank');
+  }
 }

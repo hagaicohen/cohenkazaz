@@ -29,6 +29,18 @@
   text-decoration: underline;
 }
 
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.contact-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+}
+
 .business-cards {
   display: flex; 
   justify-content: space-between;
@@ -44,25 +56,25 @@
 
 @media (max-width: 768px) {
   .business-card {
-      width: 100%;
-      margin-bottom: 10px; /* Add margin to separate cards */
+    width: 100%;
+    margin-bottom: 10px; /* Add margin to separate cards */
   }
 
   .business-cards {
-      gap: 10px; /* Add gap between cards */
+    gap: 10px; /* Add gap between cards */
   }
 
   .contact-content {
-      text-align: center; /* Center text for mobile view */
+    text-align: center; /* Center text for mobile view */
   }
 
   form {
-      align-items: center; /* Center form elements for mobile view */
+    align-items: center; /* Center form elements for mobile view */
   }
 
   .form-group, form button {
-      width: calc(100% - 40px); /* Ensure form group takes full width with padding */
-      margin: 0 auto 15px; /* Center the form group */
+    width: calc(100% - 40px); /* Ensure form group takes full width with padding */
+    margin: 0 auto 15px; /* Center the form group */
   }
 }
 
