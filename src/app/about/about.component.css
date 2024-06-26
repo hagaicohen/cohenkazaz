@@ -52,8 +52,9 @@
 }
 
 .lawyer-photo {
-  width: 350px; /* גודל קבוע לתמונה */
-  height: 350px; /* גודל קבוע לתמונה */
+  width: 100%; /* רוחב מלא בקונטיינר */
+  max-width: 300px; /* הגבלת רוחב מקסימלי */
+  height: auto; /* שמירה על יחס גובה-רוחב */
   border-radius: 50%; /* עיגול */
   object-fit: cover;
   margin-bottom: 10px;
@@ -72,15 +73,21 @@
 
 @media (max-width: 768px) {
   .lawyer-info {
-      flex-direction: column; /* בתצוגת מובייל עורכי הדין יהיו אחד מעל השני */
+    flex-direction: column; /* בתצוגת מובייל עורכי הדין יהיו אחד מעל השני */
+    align-items: center; /* מרכז את התוכן */
   }
 
   .lawyer {
-      flex: 1 1 100%; /* התפרסות על כל רוחב הקונטיינר */
+    flex: 1 1 100%; /* התפרסות על כל רוחב הקונטיינר */
+    text-align: center; /* מרכז את הטקסט */
   }
 
   /* הסרת הקו המבדיל במובייל */
   .lawyer-info::after {
-      display: none;
+    display: none;
+  }
+
+  .lawyer-photo {
+    max-width: 200px; /* גודל מקסימלי מותאם לתצוגת מובייל */
   }
 }
