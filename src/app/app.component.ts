@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit {
 
   currentSection: string = 'home';
 
-  constructor() {}
+  constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit() {
     this.addFadeInEffect();
@@ -22,35 +22,43 @@ export class AppComponent implements AfterViewInit {
   onSectionChange(section: string) {
     this.currentSection = section;
 
-    let element: ElementRef | undefined;
-
-    switch (section) {
-      case 'home':
-        element = this.homeSection;
-        break;
-      case 'about':
-        element = this.aboutSection;
-        break;
-      case 'services':
-        element = this.servicesSection;
-        break;
-      case 'contact':
-        element = this.contactSection;
-        break;
-    }
-
-    if (element && element.nativeElement) {
-      // Use setTimeout to delay scroll to ensure element is ready
-      setTimeout(() => {
-        element!.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100); // Adjust delay timing as needed
+    if (!this.isMobile()) {
+      setTimeout(() => this.addFadeInEffect(), 0);
     } else {
-        console.warn(`Element for section ${section} is not defined or does not have nativeElement.`);
+
+      let element: ElementRef | undefined;
+
+      switch (section) {
+        case 'home':
+          element = this.homeSection;
+          break;
+        case 'about':
+          element = this.aboutSection;
+          break;
+        case 'services':
+          element = this.servicesSection;
+          break;
+        case 'contact':
+          element = this.contactSection;
+          break;
+      }
+
+      if (element && element.nativeElement) {
+        // Use setTimeout to delay scroll to ensure element is ready
+        setTimeout(() => {
+          element!.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100); // Adjust delay timing as needed
+      } else {
+          console.warn(`Element for section ${section} is not defined or does not have nativeElement.`);
+      }
     }
   }
 
   private addFadeInEffect() {
-    // Implement your fade-in effect logic here if needed
+    const sections = document.querySelectorAll('.fade-in');
+    sections.forEach(section => {
+      this.renderer.addClass(section, 'visible');
+    });
   }
 
   public isMobile() {
