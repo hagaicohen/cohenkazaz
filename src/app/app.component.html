@@ -17,16 +17,16 @@
 </ng-container>
 
 <ng-container *ngIf="isMobile()">
-  <section id="home">
+  <section id="home" #homeSection>
     <app-home></app-home>
   </section>
-  <section id="about">
+  <section id="about" #aboutSection>
     <app-about></app-about>
   </section>
-  <section id="services">
+  <section id="services" #servicesSection>
     <app-services></app-services>
   </section>
-  <section id="contact">
+  <section id="contact" #contactSection>
     <app-contact></app-contact>
   </section>
 </ng-container>
