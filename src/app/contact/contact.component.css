@@ -20,6 +20,10 @@
   margin-bottom: 20px;
 }
 
+.contact-details {
+  text-align: right;
+}
+
 .contact-details p a {
   color: #007bff;
   text-decoration: none;
