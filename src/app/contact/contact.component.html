@@ -1,16 +1,19 @@
 <div class="contact-content">
   <h1>צור קשר</h1>
   <div class="contact-details">
-    <p><strong>כתובת:</strong> רחוב חשוון 10, קומה ג' (מתחם פבליקו), קִרְיַת גת.</p>
+    <p><strong>כתובת:</strong></p>
+    <p style="margin-top:-20px">רחוב חשוון 10, קומה ג' (מתחם פבליקו), קִרְיַת גת.</p>
     <ng-container *ngIf="!isMobile()">
-      <p><strong>טלפון:</strong> 052-6706744 (חגי), 054-694-9137 (עפרה)</p>
+      <p><strong>טלפונים:</strong> 052-6706744 (חגי), 054-694-9137 (עפרה)</p>
     </ng-container>
     <ng-container *ngIf="isMobile()">
-      <p><strong>טלפון:</strong></p>
-      <p style="margin-top:-20px">052-6706744 (חגי), 054-694-9137 (עפרה)</p>
+      <p><strong>טלפונים:</strong></p>
+      <p style="margin-top:-20px">052-6706744 (חגי)</p>
+      <p style="margin-top:-20px">054-694-9137 (עפרה)</p>
     </ng-container>
 
-    <p><strong>דוא"ל:</strong> <a href="mailto:office@cohenkazaz.law">office@cohenkazaz.law</a></p>
+    <p><strong>דוא"ל:</strong></p>
+    <p style="margin-top:-20px"><a href="mailto:office@cohenkazaz.law"> office@cohenkazaz.law</a></p>
     
     <ng-container *ngIf="!isMobile()">
       <p><strong>שעות פעילות:</strong> ימים א - ה מ-09:00 עד 18:00</p>
@@ -21,11 +24,13 @@
     </ng-container>
 
     
-    <p><strong>פייסבוק:</strong> <a href="https://www.facebook.com/profile.php?id=61560157382416" target="_blank">דף הפייסבוק שלנו</a></p>
-    <div style="width: 100%; height: 25px; display: flex;">
+    <p ><strong>פייסבוק:</strong> </p>
+    <p style="margin-top:-20px"><a href="https://www.facebook.com/profile.php?id=61560157382416" target="_blank">דף הפייסבוק שלנו</a></p>
+    
       <div style="margin-top: -3px;">
         <strong style="font-size: 1.2em; color: #666;">וואטסאפ:</strong>
       </div>
+    <div style="width: 100%; height: 25px; display: flex;">
       <div style="margin-right: 3px; cursor: pointer;">
         <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp Icon" class="contact-icon" (click)="sendWhatsApp('972526706744')">
       </div>
@@ -38,7 +43,7 @@
       </div>
     </div>
   </div>
-  <div class="business-cards" style="margin-top: 10px;">
+  <div class="business-cards" style="margin-top: 20px;">
     <img src="assets/images/hagai-card.png" alt="Hagai Business Card" class="business-card">
     <img src="assets/images/ofra-card.png" alt="Ofra Business Card" class="business-card">
   </div>
