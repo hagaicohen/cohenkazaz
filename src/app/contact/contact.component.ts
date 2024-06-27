@@ -33,4 +33,9 @@ export class ContactComponent {
   sendWhatsApp(phoneNumber: string) {
     window.open(`https://wa.me/${phoneNumber}`, '_blank');
   }
+
+  public isMobile() {
+    return window.innerWidth <= 768;
+  }
+
 }
