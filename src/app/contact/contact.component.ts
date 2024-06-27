@@ -20,8 +20,13 @@ export class ContactComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
-      // ניתן להוסיף כאן טיפול במשלוח הטופס, כגון שליחה לשרת
+      
+      let name = this.contactForm.value['name'];
+      let phone = this.contactForm.value['phone'];
+      let email = this.contactForm.value['email'];
+      let message = this.contactForm.value['message'];
+      
+      
     }
   }
 
