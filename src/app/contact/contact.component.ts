@@ -24,7 +24,7 @@ export class ContactComponent implements OnInit {
     const pageTitle = 'צור קשר | כהן־קזז – משרד עורכי דין';
     const description =
       'צרו קשר עם כהן־קזז – משרד עורכי דין: כתובת ברח׳ חשוון 10 (Publico), קריית גת. טלפון: 052-6706744 (חגי), 054-6949137 (עפרה). שעות פעילות: א׳–ה׳ 09:00–18:00.';
-    const canonical = 'https://cohenkazaz.vercel.app/contact';
+    const canonical = 'https://cohenkazaz.law/contact';
 
     this.title.setTitle(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
@@ -59,7 +59,7 @@ export class ContactComponent implements OnInit {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
       'name': 'כהן־קזז, משרד עורכי דין',
-      'url': 'https://cohenkazaz.vercel.app/',
+      'url': 'https://cohenkazaz.law/',
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': 'רחוב חשוון 10, קומה ג׳ (Publico)',
