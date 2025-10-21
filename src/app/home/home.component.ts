@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
       'כהן-קזז | משרד עורכי דין בקריית גת – נדל״ן, מיסוי מקרקעין, דיני משפחה וירושה';
     const description =
       'משרד עורכי הדין כהן-קזז מעניק ליווי אישי ומקצועי בעסקאות נדל״ן, מס שבח ומס רכישה, הסכמי ממון, צוואות וירושות וגישור. שירות בפריסה: קריית גת, הדרום, בית שמש וירושלים.';
-    const canonical = 'https://cohenkazaz.law/';
+    const canonical = 'https://cohenkazaz.vercel.app/';
 
     // Title + Description
     this.title.setTitle(pageTitle);

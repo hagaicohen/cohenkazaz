@@ -18,7 +18,7 @@ export class AboutComponent implements OnInit {
     const pageTitle = 'אודות | כהן־קזז – משרד עורכי דין';
     const description =
       'הכירו את צוות כהן־קזז: עו״ד עפרה קזז (אזרחי, מקרקעין, משפחה; ייפוי כוח מתמשך) ועו״ד חגי כהן (מיסוי מקרקעין, אזרחי-מסחרי). ניסיון מגוון וליווי אישי.';
-    const canonical = 'https://cohenkazaz.law/about';
+    const canonical = 'https://cohenkazaz.vercel.app/about';
 
     // Title + Description
     this.title.setTitle(pageTitle);
@@ -50,7 +50,7 @@ export class AboutComponent implements OnInit {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
       'name': 'כהן־קזז, משרד עורכי דין',
-      'url': 'https://cohenkazaz.law/',
+      'url': 'https://cohenkazaz.vercel.app/',
       'areaServed': ['קריית גת','הדרום','בית שמש','ירושלים']
     });
 

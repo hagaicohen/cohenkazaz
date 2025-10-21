@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://cohenkazaz.law/sitemap.xml
+Sitemap: https://cohenkazaz.vercel.app/sitemap.xml
