@@ -5,70 +5,65 @@
     <p style="margin-top:-20px">רחוב חשוון 10, קומה ג' (מתחם פבליקו), קִרְיַת גת.</p>
 
     <p><strong>טלפונים:</strong></p>
-    <p style="margin-top:-20px">
-      <a href="tel:+972526706744" aria-label="התקשר לחגי">052-6706744 (חגי)</a>
-    </p>
-    <p style="margin-top:-20px">
-      <a href="tel:+972546949137" aria-label="התקשר לעפרה">054-694-9137 (עפרה)</a>
-    </p>
+    <p style="margin-top:-20px">052-6706744 (חגי)</p>
+    <p style="margin-top:-20px">054-694-9137 (עפרה)</p>
+
 
     <p><strong>דוא"ל:</strong></p>
-    <p style="margin-top:-20px">
-      <a href="mailto:office@cohenkazaz.law">office@cohenkazaz.law</a>
-    </p>
+    <p style="margin-top:-20px"><a href="mailto:office@cohenkazaz.law"> office@cohenkazaz.law</a></p>
+    
 
     <p><strong>שעות הפעילות:</strong></p>
-    <p style="margin-top:-20px">ימים א - ה מ-09:00 עד 18:00</p>
+    <p style="margin-top:-20px"> ימים א - ה מ-09:00 עד 18:00</p>
 
-    <p><strong>פייסבוק:</strong></p>
-    <p style="margin-top:-20px">
-      <a href="https://www.facebook.com/profile.php?id=61560157382416" target="_blank" rel="noopener">דף הפייסבוק שלנו</a>
-    </p>
-
-    <div style="margin-top: -3px;">
-      <strong style="font-size: 1.2em; color: #666;">וואטסאפ:</strong>
-    </div>
+    
+    <p ><strong>פייסבוק:</strong> </p>
+    <p style="margin-top:-20px"><a href="https://www.facebook.com/profile.php?id=61560157382416" target="_blank">דף הפייסבוק שלנו</a></p>
+    
+      <div style="margin-top: -3px;">
+        <strong style="font-size: 1.2em; color: #666;">וואטסאפ:</strong>
+      </div>
     <div style="width: 100%; height: 25px; display: flex;">
       <div style="margin-right: 3px; cursor: pointer;">
-        <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp לחגי" class="contact-icon" loading="lazy" (click)="sendWhatsApp('972526706744')">
+        <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp Icon" class="contact-icon" (click)="sendWhatsApp('972526706744')">
       </div>
       <div style="font-size: 1.2em; color: #007bff; margin-top: -2px; cursor: pointer; margin-right: -5px;" (click)="sendWhatsApp('972526706744')">(חגי)</div>
       <div style="margin-right: 15px; cursor: pointer;">
-        <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp לעפרה" class="contact-icon" loading="lazy" (click)="sendWhatsApp('972546949137')">
+        <img src="assets/images/icon-whatsapp.gif" alt="WhatsApp Icon" class="contact-icon" (click)="sendWhatsApp('972546949137')">
       </div>
       <div style="font-size: 1.2em; color: #007bff; margin-top: -2px; cursor: pointer; margin-right: -5px;" (click)="sendWhatsApp('972546949137')">
         (עפרה)
       </div>
     </div>
   </div>
-
   <div class="business-cards" style="margin-top: 20px;">
-    <img src="assets/images/hagai-card.png" alt="כרטיס ביקור – חגי כהן" class="business-card" loading="lazy">
-    <img src="assets/images/ofra-card.png" alt="כרטיס ביקור – עפרה קזז" class="business-card" loading="lazy">
+    <img src="assets/images/hagai-card.png" alt="Hagai Business Card" class="business-card">
+    <img src="assets/images/ofra-card.png" alt="Ofra Business Card" class="business-card">
   </div>
 
   <h2>טופס יצירת קשר</h2>
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">שם מלא</label>
-      <input type="text" id="name" formControlName="name" autocomplete="name">
-      <div *ngIf="contactForm.get('name')!.invalid && contactForm.get('name')!.touched">שדה זה הוא חובה</div>
-    </div>
-    <div class="form-group">
-      <label for="phone">טלפון</label>
-      <input type="tel" id="phone" formControlName="phone" autocomplete="tel">
-      <div *ngIf="contactForm.get('phone')!.invalid && contactForm.get('phone')!.touched">שדה זה הוא חובה</div>
-    </div>
-    <div class="form-group">
-      <label for="email">דוא"ל</label>
-      <input type="email" id="email" formControlName="email" autocomplete="email">
-      <div *ngIf="contactForm.get('email')!.invalid && contactForm.get('email')!.touched">הכנס דוא"ל תקין</div>
-    </div>
-    <div class="form-group">
-      <label for="message">הודעה</label>
-      <textarea id="message" formControlName="message"></textarea>
-      <div *ngIf="contactForm.get('message')!.invalid && contactForm.get('message')!.touched">שדה זה הוא חובה</div>
-    </div>
-    <button type="submit" [disabled]="!contactForm.valid">שלח</button>
-  </form>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">שם מלא</label>
+        <input type="text" id="name" formControlName="name">
+        <div *ngIf="contactForm.get('name')!.invalid && contactForm.get('name')!.touched">שדה זה הוא חובה</div>
+      </div>
+      <div class="form-group">
+        <label for="phone">טלפון</label>
+        <input type="text" id="phone" formControlName="phone">
+        <div *ngIf="contactForm.get('phone')!.invalid && contactForm.get('phone')!.touched">שדה זה הוא חובה</div>
+      </div>
+      <div class="form-group">
+        <label for="email">דוא"ל</label>
+        <input type="email" id="email" formControlName="email">
+        <div *ngIf="contactForm.get('email')!.invalid && contactForm.get('email')!.touched">הכנס דוא"ל תקין</div>
+      </div>
+      <div class="form-group">
+        <label for="message">הודעה</label>
+        <textarea id="message" formControlName="message"></textarea>
+        <div *ngIf="contactForm.get('message')!.invalid && contactForm.get('message')!.touched">שדה זה הוא חובה</div>
+      </div>
+      <button type="submit" [disabled]="!contactForm.valid">שלח</button>
+    </form>
+
 </div>
