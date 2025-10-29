@@ -19,7 +19,8 @@ export class ContactComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const pageTitle = 'צור קשר | כהן־קזז – משרד עורכי דין';
+    // שינוי שם הדף בלבד:
+    const pageTitle = 'צור קשר | כהן־קזז – דיני משפחה, נדל״ן (נדלן) ומיסוי מקרקעין';
     const description =
       'צרו קשר עם כהן־קזז – משרד עורכי דין בקריית גת: ייעוץ מקצועי במיוחד בדיני מקרקעין ודיני משפחה. כתובת: רח׳ חשוון 10 (Publico). טלפון: 052-6706744 (חגי), 054-6949137 (עפרה). שעות פעילות: א׳–ה׳ 09:00–18:00.';
     const canonical = 'https://cohenkazaz.law/contact';

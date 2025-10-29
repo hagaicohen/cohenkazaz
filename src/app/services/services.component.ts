@@ -15,7 +15,8 @@ export class ServicesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const pageTitle = 'תחומי התמחות | כהן־קזז – דיני מקרקעין, מיסוי מקרקעין ודיני משפחה';
+    // שינוי שם הדף בלבד:
+    const pageTitle = 'תחומי התמחות | כהן־קזז – דיני משפחה, נדל״ן (נדלן) ומיסוי מקרקעין';
     const description =
       'כהן־קזז – משרד עורכי דין בקריית גת המתמחה בדיני מקרקעין, מיסוי מקרקעין, דיני משפחה, ירושות, צוואות וגישור. ליווי אישי ומקצועי מקריית גת ועד ירושלים.';
     const canonical = 'https://cohenkazaz.law/services';
