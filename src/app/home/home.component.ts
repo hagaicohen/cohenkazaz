@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,36 +9,32 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  
   constructor(
     private title: Title,
     private meta: Meta,
-    @Inject(DOCUMENT) private doc: Document
+    @Inject(DOCUMENT) private doc: Document,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const pageTitle =
-      'כהן-קזז | משרד עורכי דין בקריית גת – נדל״ן, מיסוי מקרקעין, דיני משפחה וירושה';
+      'כהן-קזז | משרד עורכי דין בקריית גת – דיני משפחה, נדל״ן ומיסוי מקרקעין';
     const description =
-      'משרד עורכי הדין כהן-קזז מעניק ליווי אישי ומקצועי בעסקאות נדל״ן, מס שבח ומס רכישה, הסכמי ממון, צוואות וירושות וגישור. שירות בפריסה: קריית גת, הדרום, בית שמש וירושלים.';
+      'כהן-קזז – משרד עורכי דין בקריית גת: מומחים בדיני משפחה, דיני מקרקעין, מיסוי מקרקעין, ירושות, צוואות וגישור. שירות מקצועי ורגיש בקריית גת, הדרום, בית שמש וירושלים.';
     const canonical = 'https://cohenkazaz.law/';
 
-    // Title + Description
     this.title.setTitle(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
-
-    // Open Graph (ללא תמונה לעת עתה)
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:site_name', content: 'כהן-קזז, משרד עורכי דין' });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:url', content: canonical });
-
-    // Twitter
     this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
     this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
     this.meta.updateTag({ name: 'twitter:description', content: description });
 
-    // Canonical
     let linkEl = this.doc.querySelector<HTMLLinkElement>("link[rel='canonical']");
     if (!linkEl) {
       linkEl = this.doc.createElement('link');
@@ -46,14 +43,22 @@ export class HomeComponent implements OnInit {
     }
     linkEl.href = canonical;
 
-    // JSON-LD (LegalService) – ללא image כרגע
     const jsonLd = {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
       name: 'כהן-קזז, משרד עורכי דין',
       url: canonical,
       telephone: '+972-52-6706744',
-      email: 'office@cohen-kazaz.law',
+      email: 'office@cohenkazaz.law',
+      keywords: [
+        'דיני משפחה',
+        'גירושין',
+        'הסכמי ממון',
+        'משמורת',
+        'צוואות וירושות',
+        'דיני מקרקעין',
+        'מיסוי מקרקעין'
+      ],
       address: {
         '@type': 'PostalAddress',
         streetAddress: "רח׳ חשוון 10, Publico Complex, קומה 3",
@@ -61,7 +66,7 @@ export class HomeComponent implements OnInit {
         addressRegion: 'מחוז הדרום',
         addressCountry: 'IL'
       },
-      areaServed: ['קריית גת','הדרום','בית שמש','ירושלים'],
+      areaServed: ['קריית גת', 'הדרום', 'בית שמש', 'ירושלים'],
       openingHoursSpecification: [{
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Sunday','Monday','Tuesday','Wednesday','Thursday'],
@@ -70,6 +75,10 @@ export class HomeComponent implements OnInit {
       }]
     };
     this.upsertJsonLd('legalservice-home', jsonLd);
+  }
+
+  goToContact(): void {
+    this.router.navigate(['/contact']);
   }
 
   private upsertJsonLd(id: string, obj: any) {

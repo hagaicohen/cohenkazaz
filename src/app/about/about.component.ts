@@ -17,14 +17,14 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     const pageTitle = 'אודות | כהן־קזז – משרד עורכי דין';
     const description =
-      'הכירו את צוות כהן־קזז: עו״ד עפרה קזז (אזרחי, מקרקעין, משפחה; ייפוי כוח מתמשך) ועו״ד חגי כהן (מיסוי מקרקעין, אזרחי-מסחרי). ניסיון מגוון וליווי אישי.';
+      'הכירו את צוות כהן־קזז: עו״ד עפרה קזז (אזרחי, מקרקעין, דיני משפחה; ייפוי כוח מתמשך) ועו״ד חגי כהן (מיסוי מקרקעין, אזרחי-מסחרי). ליווי אישי בקריית גת, הדרום, בית שמש וירושלים.';
     const canonical = 'https://cohenkazaz.law/about';
 
     // Title + Description
     this.title.setTitle(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
 
-    // Open Graph (בלי תמונה כרגע)
+    // Open Graph
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:site_name', content: 'כהן-קזז, משרד עורכי דין' });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
@@ -51,7 +51,8 @@ export class AboutComponent implements OnInit {
       '@type': 'LegalService',
       'name': 'כהן־קזז, משרד עורכי דין',
       'url': 'https://cohenkazaz.law/',
-      'areaServed': ['קריית גת','הדרום','בית שמש','ירושלים']
+      'areaServed': ['קריית גת','הדרום','בית שמש','ירושלים'],
+      'keywords': ['דיני משפחה', 'עורך דין גירושין', 'משמורת', 'הסכם ממון', 'ידועים בציבור', 'צוואות', 'ירושות']
     });
 
     // JSON-LD: עו״ד עפרה קזז
