@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>כהן־קזז – משרד עורכי דין בקריית גת | דיני משפחה, נדל״ן (נדלן) ומיסוי מקרקעין</title>
+    <title>כהן־קזז – משרד עורכי דין בקריית גת | דיני משפחה, גירושין, נדל״ן (נדלן) ומיסוי מקרקעין</title>
 
     <!-- חובה ל-SPA -->
     <base href="/" />
@@ -14,16 +14,16 @@
     />
 
     <!-- SEO בסיסי -->
-    <meta name="keywords" content="עורך דין קריית גת, דיני משפחה, מקרקעין, מיסוי מקרקעין, צוואות, ירושות, הסכמי ממון, ייפוי כוח מתמשך" />
+    <meta name="keywords" content="גירושין, עורך דין גירושין, עו״ד גירושין, עורך דין קריית גת, דיני משפחה, מקרקעין, מיסוי מקרקעין, צוואות, ירושות, הסכמי ממון, ייפוי כוח מתמשך" />
     <link rel="canonical" href="https://cohenkazaz.law/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="כהן־קזז – משרד עורכי דין" />
-    <meta property="og:title" content="כהן־קזז – משרד עורכי דין בקריית גת" />
+    <meta property="og:title" content="כהן־קזז – עו״ד דיני משפחה וגירושין בקריית גת" />
     <meta
       property="og:description"
-      content="משרד עורכי דין כהן־קזז מתמחה בדיני משפחה ובמקרקעין. ניסיון רב, יחס אישי, ושירות בכל הדרום וירושלים."
+      content="משרד עורכי דין כהן־קזז מתמחה בדיני משפחה וגירושין, וכן במקרקעין ומיסוי מקרקעין. ניסיון רב, יחס אישי, ושירות בכל הדרום וירושלים."
     />
     <meta property="og:url" content="https://cohenkazaz.law/" />
     <meta property="og:locale" content="he_IL" />
@@ -31,7 +31,7 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="כהן־קזז – משרד עורכי דין בקריית גת" />
+    <meta name="twitter:title" content="כהן־קזז – עו״ד דיני משפחה וגירושין בקריית גת" />
     <meta
       name="twitter:description"
       content="מומחים בדיני משפחה, גירושין, צוואות וירושות, וכן במקרקעין ומיסוי מקרקעין. יחס אישי ושירות מקצועי."
@@ -41,11 +41,11 @@
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
-    <!-- טעינת פונט -->
+    <!-- פונט -->
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
+    <!-- Structured Data: LegalService -->
+    <script type="application/ld+json" id="jsonld-legalservice-root">
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
@@ -62,11 +62,26 @@
         "telephone": "+972-52-6706744",
         "email": "office@cohenkazaz.law",
         "areaServed": ["קריית גת", "הדרום", "בית שמש", "ירושלים"],
-        "knowsAbout": ["דיני משפחה", "מקרקעין", "מיסוי מקרקעין", "ייפוי כוח מתמשך", "גישור"]
+        "knowsAbout": ["דיני משפחה", "גירושין", "מקרקעין", "מיסוי מקרקעין", "ייפוי כוח מתמשך", "גישור"],
+        "keywords": ["גירושין", "עורך דין גירושין", "עו״ד גירושין", "דיני משפחה", "מקרקעין", "מיסוי מקרקעין"]
+      }
+    </script>
+
+    <!-- Structured Data: SiteNavigationElement (לא משנה את ה-Navbar בפועל) -->
+    <script type="application/ld+json" id="jsonld-sitenav">
+      {
+        "@context": "https://schema.org",
+        "@type": "SiteNavigationElement",
+        "name": ["בית","אודות","שירותים","צור קשר"],
+        "url": [
+          "https://cohenkazaz.law/",
+          "https://cohenkazaz.law/about",
+          "https://cohenkazaz.law/services",
+          "https://cohenkazaz.law/contact"
+        ]
       }
     </script>
   </head>
-
   <body>
     <app-root></app-root>
   </body>
