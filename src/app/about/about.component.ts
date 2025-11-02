@@ -15,8 +15,9 @@ export class AboutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const pageTitle = 'אודות | כהן־קזז – עו״ד דיני משפחה וגירושין, נדל״ן ומיסוי מקרקעין בקריית גת';
-    const description = 'הכירו את כהן־קזז – משרד עורכי דין בקריית גת, עם התמחות בדיני משפחה וגירושין, נדל״ן ומיסוי מקרקעין. ניסיון, יחס אישי וליווי מקצועי.';
+    // טייטל/תיאור עם כל הווריאציות (לא משנה נראות)
+    const pageTitle = 'אודות | כהן־קזז – עו״ד דיני משפחה וגירושין, נדל״ן (נדלן) וגישור בקריית/קרית גת';
+    const description = 'הכירו את כהן־קזז – משרד עורכי דין בקריית/קרית גת: דיני משפחה וגירושין, נדל״ן (נדלן) ומיסוי מקרקעין וגישור. ניסיון, יחס אישי וליווי מקצועי.';
 
     const canonical = 'https://cohenkazaz.law/about';
     const ogImage = 'https://cohenkazaz.law/assets/og-default.jpg';
@@ -45,20 +46,36 @@ export class AboutComponent implements OnInit {
     }
     linkEl.href = canonical;
 
+    // ========= JSON-LD: LegalService (מחוזק בווריאציות ובאזורים) =========
     this.upsertJsonLd('about-legalservice', {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
       'name': 'כהן־קזז – משרד עורכי דין',
       'url': 'https://cohenkazaz.law/',
-      'serviceType': ['דיני משפחה','גירושין','נדל״ן','מיסוי מקרקעין'],
+      'serviceType': ['דיני משפחה','גירושין','נדל״ן','נדלן','מיסוי מקרקעין','גישור','מגשר'],
+      'areaServed': ['קריית גת','קרית גת','בית שמש','ירושלים','הדרום'],
       'keywords': [
-        'עו״ד גירושין קריית גת',
-        'עורך דין משפחה קרית/קריית גת',
-        'משמורת','מזונות','הסכמי ממון',
-        'נדל״ן','מיסוי מקרקעין'
-      ]
+        // משפחה/גירושין
+        'עורך דין משפחה קריית גת','עורך דין משפחה קרית גת','משרד עורכי דין משפחה קריית גת','משרד עורכי דין משפחה קרית גת',
+        'עו״ד גירושין קריית גת','עו״ד גירושין קרית גת','עורך דין גירושין קריית גת','עורך דין גירושין קרית גת',
+        // נדל״ן/נדלן
+        'עורך דין נדל״ן קריית גת','עורך דין נדל״ן קרית גת','עורך דין נדלן קריית גת','עורך דין נדלן קרית גת',
+        'משרד עורכי דין נדל״ן','משרד עורכי דין נדלן',
+        // גישור
+        'גישור קריית גת','גישור קרית גת','מגשר קריית גת','מגשר קרית גת','מגשרים קריית גת','מגשרים קרית גת'
+      ],
+      // שדות מועילים ללוקאלי
+      'telephone': '+972-52-6706744',
+      'address': {
+        '@type': 'PostalAddress',
+        'streetAddress': 'חשוון 10 (Publico)',
+        'addressLocality': 'קריית גת',
+        'addressCountry': 'IL'
+      },
+      'openingHours': 'Su-Th 09:00-18:00'
     });
 
+    // ========= JSON-LD: Ofra =========
     this.upsertJsonLd('about-person-ofra', {
       '@context': 'https://schema.org',
       '@type': 'Person',
@@ -66,9 +83,10 @@ export class AboutComponent implements OnInit {
       'jobTitle': 'עו״ד ומגשרת',
       'alumniOf': 'הקריה האקדמית אונו (LLB)',
       'worksFor': { '@type': 'LegalService', 'name': 'כהן־קזז – משרד עורכי דין' },
-      'knowsAbout': ['מקרקעין','נדל״ן','דיני משפחה','גירושין','אזרחי','ייפוי כוח מתמשך']
+      'knowsAbout': ['מקרקעין','נדל״ן','נדלן','דיני משפחה','גירושין','אזרחי','ייפוי כוח מתמשך','גישור','מגשר']
     });
 
+    // ========= JSON-LD: Hagai =========
     this.upsertJsonLd('about-person-hagai', {
       '@context': 'https://schema.org',
       '@type': 'Person',
@@ -79,9 +97,10 @@ export class AboutComponent implements OnInit {
         'אוניברסיטת בר-אילן (LLB)'
       ],
       'worksFor': { '@type': 'LegalService', 'name': 'כהן־קזז – משרד עורכי דין' },
-      'knowsAbout': ['מיסוי מקרקעין','אזרחי-מסחרי','נדל״ן','דיני משפחה','גירושין']
+      'knowsAbout': ['מיסוי מקרקעין','אזרחי-מסחרי','נדל״ן','נדלן','דיני משפחה','גירושין','גישור','מגשר']
     });
 
+    // ========= JSON-LD: Breadcrumbs =========
     this.upsertJsonLd('about-breadcrumbs', {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
