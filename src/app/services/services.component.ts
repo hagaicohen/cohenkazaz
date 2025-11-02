@@ -15,29 +15,32 @@ export class ServicesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // טייטל/דסקריפשן עם הווריאציות (ללא שינוי נראות)
-    const pageTitle = 'תחומי התמחות | כהן־קזז – עורך דין משפחה, גירושין, נדל״ן (נדלן) וגישור בקריית/קרית גת';
-    const description =
-      'כהן־קזז – משרד עורכי דין בקריית/קרית גת: עורך דין משפחה וגירושין (משמורת, מזונות, הסכמי ממון, צווי הגנה, ירושות), לצד נדל״ן (נדלן) ומיסוי מקרקעין (עסקאות, מס שבח/רכישה, השגות). ליווי אישי ומקצועי.';
-
-    const canonical = 'https://cohenkazaz.law/services';
-    const ogImage = 'https://cohenkazaz.law/assets/og-default.jpg';
+    // ----- Meta (אחיד, ללא וריאציות "קריית/קרית") -----
+    const canonical  = 'https://cohenkazaz.law/services';
+    const pageTitle  = 'תחומי התמחות | כהן־קזז – עורך דין משפחה, גירושין, נדל״ן וגישור בקריית גת';
+    const description = 'כהן־קזז – משרד עורכי דין בקריית גת: משפחה וגירושין (משמורת, מזונות, הסכמי ממון, צוואות/ירושות, ייפוי כוח מתמשך), לצד נדל״ן ומיסוי מקרקעין (עסקאות, מס שבח/רכישה, השגות). ליווי אישי ומקצועי.';
+    const ogImage    = 'https://cohenkazaz.law/assets/og-default.jpg';
 
     this.title.setTitle(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ name: 'robots', content: 'index,follow' });
 
+    // Open Graph
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:url', content: canonical });
     this.meta.updateTag({ property: 'og:image', content: ogImage });
+    this.meta.updateTag({ property: 'og:image:width', content: '1200' });
+    this.meta.updateTag({ property: 'og:image:height', content: '630' });
 
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+    // Twitter
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
     this.meta.updateTag({ name: 'twitter:description', content: description });
     this.meta.updateTag({ name: 'twitter:image', content: ogImage });
 
+    // Canonical
     let linkEl = this.doc.querySelector<HTMLLinkElement>("link[rel='canonical']");
     if (!linkEl) {
       linkEl = this.doc.createElement('link');
@@ -46,53 +49,64 @@ export class ServicesComponent implements OnInit {
     }
     linkEl.href = canonical;
 
-    // ========= LegalService מורחב (שקט; מכיל כל הווריאציות) =========
-    this.upsertJsonLd('services-legalservice', {
+    // ----- JSON-LD -----
+    // ישות עסקית קנונית עם @id קבוע (כמו בעמודים אחרים)
+    this.upsertJsonLd('services-legalservice-org', {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
+      '@id': 'https://cohenkazaz.law/#org',
       'name': 'כהן־קזז – משרד עורכי דין',
-      'url': canonical,
+      'url': 'https://cohenkazaz.law/',
       'image': ogImage,
-      'areaServed': ['קריית גת','קרית גת','בית שמש','ירושלים','הדרום'],
-      'serviceType': ['דיני משפחה','גירושין','נדל״ן','נדלן','מיסוי מקרקעין','גישור','משפט אזרחי','מגשר'],
-      'keywords': [
-        // משפחה/גירושין
-        'עורך דין משפחה קריית גת','עורך דין משפחה קרית גת',
-        'משרד עורכי דין משפחה קריית גת','משרד עורכי דין משפחה קרית גת',
-        'עו״ד גירושין קריית גת','עו״ד גירושין קרית גת','עורך דין גירושין',
-        // נדל״ן/נדלן
-        'דיני מקרקעין','עסקאות נדל״ן','עסקאות נדלן',
-        'מס שבח','מס רכישה','השגות מס',
-        'עורך דין נדל״ן קריית גת','עורך דין נדל״ן קרית גת','עורך דין נדלן קריית גת','עורך דין נדלן קרית גת',
-        // גישור/מגשר
-        'גישור קריית גת','גישור קרית גת','מגשר קריית גת','מגשר קרית גת','מגשרים קריית גת','מגשרים קרית גת'
-      ]
+      'telephone': '+972-52-6706744',
+      'email': 'office@cohenkazaz.law',
+      'address': {
+        '@type': 'PostalAddress',
+        'streetAddress': 'רח׳ חשוון 10, Publico Complex, קומה 3',
+        'addressLocality': 'קריית גת',
+        'addressRegion': 'מחוז הדרום',
+        'addressCountry': 'IL'
+      },
+      'areaServed': ['קריית גת', 'בית שמש', 'ירושלים', 'הדרום'],
+      'serviceType': ['דיני משפחה', 'גירושין', 'נדל״ן', 'מיסוי מקרקעין', 'גישור'],
+      'sameAs': ['https://www.facebook.com/profile.php?id=61560157382416'],
+      'priceRange': '₪₪',
+      'openingHours': 'Su-Th 09:00-18:00'
     });
 
-    // ========= FAQPage שקוף (לא משנה UI) =========
+    // FAQPage ייעודי לעמוד "תחומי התמחות"
     this.upsertJsonLd('services-faq', {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
       'mainEntity': [
         {
           '@type': 'Question',
-          'name': 'מה כולל הליווי שלכם בעסקאות נדל״ן (נדלן)?',
-          'acceptedAnswer': { '@type': 'Answer', 'text': 'בדיקות מקדמיות, חוזים, מס רכישה/שבח, השגות ורישום זכויות עד הסגירה.' }
+          'name': 'מה כולל הליווי שלכם בעסקאות נדל״ן?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'בדיקות מקדמיות, חוזים, מס רכישה/שבח, השגות ורישום זכויות עד הסגירה.'
+          }
         },
         {
           '@type': 'Question',
-          'name': 'איך מתחילים תהליך גירושין בצורה נכונה בקריית/קרית גת?',
-          'acceptedAnswer': { '@type': 'Answer', 'text': 'פגישת היכרות, מיפוי סוגיות (ילדים/רכוש/מזונות), בחינת גישור ובניית אסטרטגיה.' }
+          'name': 'איך מתחילים תהליך גירושין בצורה נכונה בקריית גת?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'פגישת היכרות, מיפוי סוגיות (ילדים/רכוש/מזונות), בחינת גישור ובניית אסטרטגיה מותאמת.'
+          }
         },
         {
           '@type': 'Question',
-          'name': 'מה כולל גישור אצל מגשר מוסמך?',
-          'acceptedAnswer': { '@type': 'Answer', 'text': 'פגישות חסויות, ניהול שיח מכבד, ניסוח הסכמות וטיוטת הסכם משפטי.' }
+          'name': 'מהו תהליך גישור ולמי הוא מתאים?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'תהליך חסוי ומובנה שמטרתו להגיע להסכמות במהירות וביעילות, תוך שמירה על יחסים תקינים.'
+          }
         }
       ]
     });
 
-    // ========= Breadcrumbs =========
+    // Breadcrumbs
     this.upsertJsonLd('services-breadcrumbs', {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

@@ -2,119 +2,99 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>כהן־קזז – משרד עורכי דין בקריית/קרית גת | עורך דין משפחה, גירושין, נדל״ן (נדלן) ומיסוי מקרקעין</title>
+    <title>כהן־קזז | עורך דין משפחה, גירושין, נדל״ן וגישור בקריית גת</title>
 
-    <!-- חובה ל-SPA -->
     <base href="/" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="כהן־קזז – משרד עורכי דין בקריית/קרית גת: עורך דין משפחה וגירושין (משמורת, מזונות, הסכמי ממון, צווי הגנה), נדל״ן (נדלן) ומיסוי מקרקעין. שירות אישי ומקצועי בקריית גת, הדרום, בית שמש וירושלים."
-    />
     <meta name="robots" content="index,follow" />
-
-    <!-- SEO בסיסי -->
-    <meta name="keywords" content="עורך דין משפחה קריית גת, עורך דין משפחה קרית גת, משרד עורכי דין משפחה קריית גת, משרד עורכי דין משפחה קרית גת, עו״ד גירושין קריית גת, עו״ד גירושין קרית גת, עורך דין נדל״ן קריית גת, עורך דין נדלן קרית גת, נדל״ן, נדלן, גישור, מגשר, מגשרים, מיסוי מקרקעין, מס שבח, מס רכישה, ירושות, צוואות, ייפוי כוח מתמשך" />
+    <meta name="description" content="כהן־קזז – משרד עורכי דין בקריית גת: דיני משפחה וגירושין, דיני מקרקעין ונדל״ן, מיסוי מקרקעין וגישור. שירות מקצועי ורגיש בקריית גת, הדרום, בית שמש וירושלים." />
     <link rel="canonical" href="https://cohenkazaz.law/" />
+    <link rel="alternate" hreflang="he-IL" href="https://cohenkazaz.law/" />
+    <link rel="alternate" hreflang="x-default" href="https://cohenkazaz.law/" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="כהן־קזז – משרד עורכי דין" />
-    <meta property="og:title" content="כהן־קזז – עורך דין משפחה, גירושין ונדל״ן (נדלן) בקריית/קרית גת" />
-    <meta
-      property="og:description"
-      content="משרד עורכי דין כהן־קזז מתמחה בדיני משפחה וגירושין, נדל״ן (נדלן) ומיסוי מקרקעין. ניסיון רב, יחס אישי ושירות בכל הדרום וירושלים."
-    />
+    <meta property="og:title" content="כהן־קזז | עורך דין משפחה, גירושין, נדל״ן וגישור בקריית גת" />
+    <meta property="og:description" content="כהן־קזז – משרד עורכי דין בקריית גת: דיני משפחה וגירושין, דיני מקרקעין ונדל״ן, מיסוי מקרקעין וגישור. שירות מקצועי ורגיש בקריית גת, הדרום, בית שמש וירושלים." />
     <meta property="og:url" content="https://cohenkazaz.law/" />
     <meta property="og:locale" content="he_IL" />
-    <meta property="og:image" content="https://cohenkazaz.law/assets/images/og-image.jpg" />
+    <meta property="og:image" content="https://cohenkazaz.law/assets/og-default.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="כהן־קזז – עורך דין משפחה, גירושין ונדל״ן (נדלן) בקריית/קרית גת" />
-    <meta
-      name="twitter:description"
-      content="דיני משפחה וגירושין, נדל״ן (נדלן) ומיסוי מקרקעין. יחס אישי ושירות מקצועי בקריית גת והאזור."
-    />
-    <meta name="twitter:image" content="https://cohenkazaz.law/assets/images/og-image.jpg" />
+    <meta name="twitter:title" content="כהן־קזז | עורך דין משפחה, גירושין, נדל״ן וגישור בקריית גת" />
+    <meta name="twitter:description" content="כהן־קזז – משרד עורכי דין בקריית גת: דיני משפחה וגירושין, דיני מקרקעין ונדל״ן, מיסוי מקרקעין וגישור. שירות מקצועי ורגיש בקריית גת, הדרום, בית שמש וירושלים." />
+    <meta name="twitter:image" content="https://cohenkazaz.law/assets/og-default.jpg" />
 
-    <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-
-    <!-- פונט -->
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Structured Data: LegalService (מחוזק בווריאציות ואזורי שירות) -->
+    <!-- LegalService (יחיד) -->
     <script type="application/ld+json" id="jsonld-legalservice-root">
-      {
-        "@context": "https://schema.org",
-        "@type": "LegalService",
-        "name": "כהן־קזז – משרד עורכי דין",
-        "alternateName": ["כהן קזז ושות'", "כהן-קזז"],
-        "url": "https://cohenkazaz.law/",
-        "image": "https://cohenkazaz.law/assets/images/og-image.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "רח׳ חשוון 10, Publico Complex, קומה 3",
-          "addressLocality": "קריית גת",
-          "addressRegion": "מחוז הדרום",
-          "addressCountry": "IL"
-        },
-        "telephone": "+972-52-6706744",
-        "email": "office@cohenkazaz.law",
-        "areaServed": ["קריית גת","קרית גת","בית שמש","ירושלים","הדרום"],
-        "serviceType": ["דיני משפחה","גירושין","נדל״ן","נדלן","מיסוי מקרקעין","גישור","מגשר"],
-        "knowsAbout": [
-          "דיני משפחה","עורך דין משפחה","משרד עורכי דין משפחה",
-          "גירושין","עו\"ד גירושין",
-          "נדל״ן","נדלן","עורך דין נדל\"ן","עורך דין נדלן",
-          "מיסוי מקרקעין","מס שבח","מס רכישה",
-          "גישור","מגשר","מגשרים","ייפוי כוח מתמשך","ירושות","צוואות"
-        ],
-        "keywords": [
-          "עורך דין משפחה קריית גת","עורך דין משפחה קרית גת",
-          "משרד עורכי דין משפחה קריית גת","משרד עורכי דין משפחה קרית גת",
-          "עו\"ד גירושין קריית גת","עו\"ד גירושין קרית גת",
-          "עורך דין נדל\"ן קריית גת","עורך דין נדלן קרית גת",
-          "גישור קריית גת","גישור קרית גת","מגשר קריית גת","מגשר קרית גת","מגשרים קריית גת","מגשרים קרית גת",
-          "מיסוי מקרקעין","מס שבח","מס רכישה"
-        ],
-        "sameAs": ["https://www.facebook.com/profile.php?id=61560157382416"],
-        "priceRange": "₪₪",
-        "openingHours": "Su-Th 09:00-18:00"
-      }
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "@id": "https://cohenkazaz.law/#org",
+      "name": "כהן־קזז – משרד עורכי דין",
+      "alternateName": ["כהן קזז ושות׳", "כהן-קזז"],
+      "url": "https://cohenkazaz.law/",
+      "image": "https://cohenkazaz.law/assets/og-default.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "רח׳ חשוון 10, Publico Complex, קומה 3",
+        "addressLocality": "קריית גת",
+        "addressRegion": "מחוז הדרום",
+        "addressCountry": "IL"
+      },
+      "telephone": "+972-52-6706744",
+      "email": "office@cohenkazaz.law",
+      "areaServed": ["קריית גת","קרית גת","בית שמש","ירושלים","הדרום"],
+      "serviceType": ["דיני משפחה","גירושין","נדל״ן","נדלן","מיסוי מקרקעין","גישור"],
+      "knowsAbout": ["דיני משפחה","עורך דין משפחה","משרד עורכי דין משפחה","גירושין","עו\"ד גירושין","נדל״ן","נדלן","עורך דין נדל\"ן","עורך דין נדלן","מיסוי מקרקעין","מס שבח","מס רכישה","גישור","מגשר","מגשרים","ייפוי כוח מתמשך","ירושות","צוואות"],
+      "priceRange": "₪₪",
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }]
+    }
     </script>
 
-    <!-- Structured Data: WebSite + SearchAction -->
-    <script type="application/ld+json" id="jsonld-website">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "כהן־קזז – משרד עורכי דין",
-        "url": "https://cohenkazaz.law/",
-        "inLanguage": "he-IL",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://cohenkazaz.law/?s={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+    <!-- WebSite -->
+    <script type="application/ld+json" id="jsonld-website-entity">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebSite",
+      "name":"כהן־קזז – משרד עורכי דין",
+      "url":"https://cohenkazaz.law/",
+      "inLanguage":"he-IL",
+      "potentialAction":{
+        "@type":"SearchAction",
+        "target":"https://cohenkazaz.law/?s={search_term_string}",
+        "query-input":"required name=search_term_string"
       }
+    }
     </script>
 
-    <!-- Structured Data: SiteNavigationElement (לא משנה את ה-Navbar בפועל) -->
+    <!-- SiteNavigationElement (אופציונלי) -->
     <script type="application/ld+json" id="jsonld-sitenav">
-      {
-        "@context": "https://schema.org",
-        "@type": "SiteNavigationElement",
-        "name": ["בית","אודות","תחומי התמחות","צור קשר"],
-        "url": [
-          "https://cohenkazaz.law/",
-          "https://cohenkazaz.law/about",
-          "https://cohenkazaz.law/services",
-          "https://cohenkazaz.law/contact"
-        ]
-      }
+    {
+      "@context": "https://schema.org",
+      "@type": "SiteNavigationElement",
+      "name": ["בית","אודות","תחומי התמחות","צור קשר"],
+      "url": [
+        "https://cohenkazaz.law/",
+        "https://cohenkazaz.law/about",
+        "https://cohenkazaz.law/services",
+        "https://cohenkazaz.law/contact"
+      ]
+    }
     </script>
   </head>
   <body>

@@ -17,29 +17,33 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // טייטל/דסקריפשן עם כל הווריאציות (ללא שינוי ויזואלי)
-    const pageTitle   = 'כהן־קזז | עורך דין משפחה, גירושין, נדל״ן (נדלן) וגישור בקריית/קרית גת';
-    const description = 'כהן־קזז – משרד עורכי דין בקריית/קרית גת: עורך דין משפחה וגירושין, דיני מקרקעין ונדל״ן (נדלן), מיסוי מקרקעין וגישור. שירות מקצועי ורגיש בקריית גת, הדרום, בית שמש וירושלים.';
-
+    // ----- Meta (אחיד, ללא וריאציות "קריית/קרית") -----
     const canonical = 'https://cohenkazaz.law/';
+    const pageTitle = 'כהן־קזז | עורך דין משפחה, גירושין, נדל״ן וגישור בקריית גת';
+    const description = 'כהן־קזז – משרד עורכי דין בקריית גת: דיני משפחה וגירושין, דיני מקרקעין ונדל״ן, מיסוי מקרקעין וגישור. שירות מקצועי ורגיש בקריית גת, הדרום, בית שמש וירושלים.';
     const ogImage = 'https://cohenkazaz.law/assets/og-default.jpg';
 
     this.title.setTitle(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ name: 'robots', content: 'index,follow' });
 
+    // Open Graph
     this.meta.updateTag({ property: 'og:type', content: 'website' });
-    this.meta.updateTag({ property: 'og:site_name', content: 'כהן-קזז, משרד עורכי דין' });
+    this.meta.updateTag({ property: 'og:site_name', content: 'כהן־קזז – משרד עורכי דין' });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:url', content: canonical });
     this.meta.updateTag({ property: 'og:image', content: ogImage });
+    this.meta.updateTag({ property: 'og:image:width', content: '1200' });
+    this.meta.updateTag({ property: 'og:image:height', content: '630' });
 
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+    // Twitter
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
     this.meta.updateTag({ name: 'twitter:description', content: description });
     this.meta.updateTag({ name: 'twitter:image', content: ogImage });
 
+    // Canonical
     let linkEl = this.doc.querySelector<HTMLLinkElement>("link[rel='canonical']");
     if (!linkEl) {
       linkEl = this.doc.createElement('link');
@@ -48,27 +52,17 @@ export class HomeComponent implements OnInit {
     }
     linkEl.href = canonical;
 
-    // ========= LegalService (מחוזק בווריאציות ואזורי שירות) =========
-    this.upsertJsonLd('legalservice-home', {
+    // ----- JSON-LD -----
+    // ישות עסקית קנונית עם @id קבוע (אליה עמודים אחרים מפנים)
+    this.upsertJsonLd('legalservice-org', {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
+      '@id': 'https://cohenkazaz.law/#org',
       'name': 'כהן־קזז – משרד עורכי דין',
-      'url': canonical,
+      'url': 'https://cohenkazaz.law/',
+      'image': ogImage,
       'telephone': '+972-52-6706744',
       'email': 'office@cohenkazaz.law',
-      'image': ogImage,
-      'serviceType': ['דיני משפחה','גירושין','נדל״ן','נדלן','מיסוי מקרקעין','גישור','מגשר'],
-      'keywords': [
-        // משפחה/גירושין
-        'עורך דין משפחה קריית גת','עורך דין משפחה קרית גת',
-        'משרד עורכי דין משפחה קריית גת','משרד עורכי דין משפחה קרית גת',
-        'עו״ד גירושין קריית גת','עו״ד גירושין קרית גת','עורך דין גירושין קריית גת','עורך דין גירושין קרית גת',
-        // נדל״ן/נדלן
-        'עורך דין נדל״ן קריית גת','עורך דין נדל״ן קרית גת','עורך דין נדלן קריית גת','עורך דין נדלן קרית גת',
-        'משרד עורכי דין נדל״ן','משרד עורכי דין נדלן',
-        // גישור/מגשר
-        'גישור קריית גת','גישור קרית גת','מגשר קריית גת','מגשר קרית גת','מגשרים קריית גת','מגשרים קרית גת'
-      ],
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': 'רח׳ חשוון 10, Publico Complex, קומה 3',
@@ -76,18 +70,14 @@ export class HomeComponent implements OnInit {
         'addressRegion': 'מחוז הדרום',
         'addressCountry': 'IL'
       },
-      'areaServed': ['קריית גת','קרית גת','בית שמש','ירושלים','הדרום'],
-      'openingHoursSpecification': [{
-        '@type': 'OpeningHoursSpecification',
-        'dayOfWeek': ['Sunday','Monday','Tuesday','Wednesday','Thursday'],
-        'opens': '09:00',
-        'closes': '18:00'
-      }],
+      'areaServed': ['קריית גת', 'בית שמש', 'ירושלים', 'הדרום'],
+      'serviceType': ['דיני משפחה', 'גירושין', 'נדל״ן', 'מיסוי מקרקעין', 'גישור'],
       'sameAs': ['https://www.facebook.com/profile.php?id=61560157382416'],
-      'priceRange': '₪₪'
+      'priceRange': '₪₪',
+      'openingHours': 'Su-Th 09:00-18:00'
     });
 
-    // ========= WebSite + SearchAction =========
+    // WebSite + SearchAction (השאר רק אם קיים חיפוש באתר בנתיב ?s=)
     this.upsertJsonLd('website-entity', {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
@@ -100,30 +90,30 @@ export class HomeComponent implements OnInit {
       }
     });
 
-    // ========= FAQPage (תופס שאילתות שכיחות; לא משנה UI) =========
+    // FAQPage (אם יש תוכן מתאים בדף הבית)
     this.upsertJsonLd('home-faq', {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
       'mainEntity': [
         {
           '@type': 'Question',
-          'name': 'מחפשים עורך דין משפחה בקריית/קרית גת – איך מתחילים?',
-          'acceptedAnswer': { '@type': 'Answer', 'text': 'קובעים פגישת היכרות, ממפים סוגיות (ילדים, רכוש, מזונות), בוחנים גישור ובונים אסטרטגיה.' }
+          'name': 'איך מתחילים תהליך גירושין נכון בקריית גת?',
+          'acceptedAnswer': { '@type': 'Answer', 'text': 'קובעים פגישת היכרות, ממפים סוגיות (ילדים/רכוש/מזונות), בוחנים גישור ובונים אסטרטגיה מותאמת.' }
         },
         {
           '@type': 'Question',
-          'name': 'מה כולל הליווי בעסקאות נדל״ן (נדלן) בקריית/קרית גת?',
-          'acceptedAnswer': { '@type': 'Answer', 'text': 'בדיקות מקדמיות, חוזים, תיאום מול רשויות המס (מס רכישה/שבח), ורישום זכויות עד הסגירה.' }
+          'name': 'מה כולל הליווי בעסקאות נדל״ן?',
+          'acceptedAnswer': { '@type': 'Answer', 'text': 'בדיקות מקדמיות, חוזים, מס רכישה/שבח, השגות ורישום זכויות עד הסגירה.' }
         },
         {
           '@type': 'Question',
-          'name': 'מה כולל תהליך גישור אצל מגשר מוסמך?',
+          'name': 'מהו תהליך גישור?',
           'acceptedAnswer': { '@type': 'Answer', 'text': 'פגישות חסויות ומובנות, שיח מכבד, ניסוח הסכמות וטיוטת הסכם משפטי.' }
         }
       ]
     });
 
-    // ========= Breadcrumbs =========
+    // Breadcrumbs
     this.upsertJsonLd('home-breadcrumbs', {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
