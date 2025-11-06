@@ -15,10 +15,10 @@ export class AboutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // ----- Page meta -----
-    const pageTitle = 'אודות | כהן־קזז – עו״ד דיני משפחה וגירושין, נדל״ן וגישור בקריית גת';
+    // ----- Page meta (שיפור המיקוד) -----
+    const pageTitle = 'אודות | משרד עורכי דין מקרקעין ומשפחה (גירושין) בקריית גת, בית שמש והדרום';
     const description =
-      'הכירו את כהן־קזז – משרד עורכי דין בקריית גת: דיני משפחה וגירושין, נדל״ן, מיסוי מקרקעין וגישור. ניסיון, יחס אישי וליווי מקצועי.';
+      'הכירו את כהן־קזז – משרד עורכי דין מוביל בקריית גת: דיני משפחה, גירושין, מקרקעין, נדל"ן, מיסוי והתחדשות עירונית. ניסיון, יחס אישי וליווי מקצועי.';
     const canonical = 'https://cohenkazaz.law/about';
     const ogImage = 'https://cohenkazaz.law/assets/og-default.jpg';
 
@@ -51,7 +51,8 @@ export class AboutComponent implements OnInit {
     }
     linkEl.href = canonical;
 
-    // ----- JSON-LD -----
+    // ----- JSON-LD (שיפור תחומי השירות והידע) -----
+    
     // ישות עסקית קנונית עם @id קבוע
     this.upsertJsonLd('about-legalservice', {
       '@context': 'https://schema.org',
@@ -69,14 +70,21 @@ export class AboutComponent implements OnInit {
         'addressRegion': 'מחוז הדרום',
         'addressCountry': 'IL'
       },
-      'areaServed': ['קריית גת', 'בית שמש', 'ירושלים', 'הדרום'],
-      'serviceType': ['דיני משפחה', 'גירושין', 'נדל״ן', 'מיסוי מקרקעין', 'גישור'],
+      'areaServed': ['קריית גת', 'בית שמש', 'ירושלים', 'הדרום', 'קרית מלאכי', 'אשקלון'],
+      
+      // הרחבת סוגי השירות
+      'serviceType': [
+        "דיני משפחה", "גירושין", "הסכם גירושין בהסכמה", "ירושות", "צוואות",
+        "דיני מקרקעין", "נדלן", "התחדשות עירונית", "עסקאות מכר יד שניה",
+        "ייצוג קבלנים", "ייצוג יזמים", "נכסים מסחריים", "גישור"
+      ],
+      
       'sameAs': ['https://www.facebook.com/profile.php?id=61560157382416'],
       'priceRange': '₪₪',
       'openingHours': 'Su-Th 09:00-18:00'
     });
 
-    // פרופילי הצוות מצביעים לישות העסקית לפי @id
+    // פרופיל עו״ד עפרה קזז (שיפור knowsAbout)
     this.upsertJsonLd('about-person-ofra', {
       '@context': 'https://schema.org',
       '@type': 'Person',
@@ -84,9 +92,10 @@ export class AboutComponent implements OnInit {
       'jobTitle': 'עו״ד ומגשרת',
       'alumniOf': 'הקריה האקדמית אונו (LLB)',
       'worksFor': { '@id': 'https://cohenkazaz.law/#org' },
-      'knowsAbout': ['מקרקעין', 'דיני משפחה', 'גישור', 'ייפוי כוח מתמשך']
+      'knowsAbout': ['מקרקעין', 'דיני משפחה', 'גירושין', 'מזונות', 'ירושות', 'ייפוי כוח מתמשך']
     });
 
+    // פרופיל עו״ד חגי כהן (שיפור knowsAbout)
     this.upsertJsonLd('about-person-hagai', {
       '@context': 'https://schema.org',
       '@type': 'Person',
@@ -97,10 +106,10 @@ export class AboutComponent implements OnInit {
         'אוניברסיטת בר-אילן (LLB)'
       ],
       'worksFor': { '@id': 'https://cohenkazaz.law/#org' },
-      'knowsAbout': ['מיסוי מקרקעין', 'נדל״ן', 'דיני משפחה', 'גישור']
+      'knowsAbout': ['מיסוי מקרקעין', 'נדל״ן', 'התחדשות עירונית', 'נכסים מסחריים', 'גישור']
     });
 
-    // Breadcrumbs של העמוד
+    // Breadcrumbs של העמוד (ללא שינוי)
     this.upsertJsonLd('about-breadcrumbs', {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

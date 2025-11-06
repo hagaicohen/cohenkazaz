@@ -17,10 +17,15 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // ----- Meta (אחיד, ללא וריאציות "קריית/קרית") -----
+    // ----- Meta (חיזוק Title ו-Description) -----
     const canonical = 'https://cohenkazaz.law/';
-    const pageTitle = 'כהן־קזז | עורך דין משפחה, גירושין, נדל״ן וגישור בקריית גת';
-    const description = 'כהן־קזז – משרד עורכי דין בקריית גת: דיני משפחה וגירושין, דיני מקרקעין ונדל״ן, מיסוי מקרקעין וגישור. שירות מקצועי ורגיש בקריית גת, הדרום, בית שמש וירושלים.';
+    
+    // Title ממוקד: כולל עורך דין, מקרקעין, משפחה, גירושין ומיקומים.
+    const pageTitle = 'עורך דין מקרקעין ומשפחה (גירושין) בקרית גת, בית שמש והדרום | כהן־קזז';
+    
+    // Description ממוקד: כולל ייצוג קבלנים, התחדשות עירונית, ירושות וצוואות.
+    const description = 'משרד עורכי דין מוביל בקריית גת ובית שמש: מומחים בנדל"ן, ייצוג קבלנים, התחדשות עירונית, וכן דיני משפחה, גירושין, ירושות וצוואות. שירות מקצועי ואנושי.';
+    
     const ogImage = 'https://cohenkazaz.law/assets/og-default.jpg';
 
     this.title.setTitle(pageTitle);
@@ -52,8 +57,8 @@ export class HomeComponent implements OnInit {
     }
     linkEl.href = canonical;
 
-    // ----- JSON-LD -----
-    // ישות עסקית קנונית עם @id קבוע (אליה עמודים אחרים מפנים)
+    // ----- JSON-LD (הרחבת LegalService ו-FAQ) -----
+    // ישות עסקית קנונית עם @id קבוע (הרחבת שירותים ואזורים)
     this.upsertJsonLd('legalservice-org', {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
@@ -70,14 +75,21 @@ export class HomeComponent implements OnInit {
         'addressRegion': 'מחוז הדרום',
         'addressCountry': 'IL'
       },
-      'areaServed': ['קריית גת', 'בית שמש', 'ירושלים', 'הדרום'],
-      'serviceType': ['דיני משפחה', 'גירושין', 'נדל״ן', 'מיסוי מקרקעין', 'גישור'],
+      // הרחבת areaServed
+      'areaServed': ['קריית גת', 'קרית גת', 'בית שמש', 'ירושלים', 'הדרום', 'אשקלון', 'קרית מלאכי'], 
+      
+      // הרחבת serviceType לכלול את כלל הנושאים
+      'serviceType': [
+        "דיני משפחה", "גירושין", "הסכם גירושין בהסכמה", "ירושות", "צוואות", "ייפוי כוח מתמשך", 
+        "דיני מקרקעין", "נדלן", "התחדשות עירונית", "עסקאות מכר יד שניה",
+        "ייצוג קבלנים", "ייצוג יזמים", "נכסים מסחריים", "גישור"
+      ],
       'sameAs': ['https://www.facebook.com/profile.php?id=61560157382416'],
       'priceRange': '₪₪',
       'openingHours': 'Su-Th 09:00-18:00'
     });
 
-    // WebSite + SearchAction (השאר רק אם קיים חיפוש באתר בנתיב ?s=)
+    // WebSite + SearchAction (ללא שינוי)
     this.upsertJsonLd('website-entity', {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
@@ -90,7 +102,7 @@ export class HomeComponent implements OnInit {
       }
     });
 
-    // FAQPage (אם יש תוכן מתאים בדף הבית)
+    // FAQPage (שיפור התשובות לכלול יותר ביטויים)
     this.upsertJsonLd('home-faq', {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
@@ -98,22 +110,22 @@ export class HomeComponent implements OnInit {
         {
           '@type': 'Question',
           'name': 'איך מתחילים תהליך גירושין נכון בקריית גת?',
-          'acceptedAnswer': { '@type': 'Answer', 'text': 'קובעים פגישת היכרות, ממפים סוגיות (ילדים/רכוש/מזונות), בוחנים גישור ובונים אסטרטגיה מותאמת.' }
+          'acceptedAnswer': { '@type': 'Answer', 'text': 'קובעים פגישת היכרות עם עורך דין משפחה, ממפים סוגיות (ילדים/רכוש/מזונות), בוחנים גישור ובונים אסטרטגיה להסכם גירושין.' }
         },
         {
           '@type': 'Question',
-          'name': 'מה כולל הליווי בעסקאות נדל״ן?',
-          'acceptedAnswer': { '@type': 'Answer', 'text': 'בדיקות מקדמיות, חוזים, מס רכישה/שבח, השגות ורישום זכויות עד הסגירה.' }
+          'name': 'מה כולל ליווי עורך דין בעסקאות נדל״ן?',
+          'acceptedAnswer': { '@type': 'Answer', 'text': 'בדיקות זכויות מקיפות, ניהול מו"מ, עריכת חוזים, תכנון מס שבח ורכישה, הגשת השגות ורישום זכויות סופי בטאבו. מתמחים גם בייצוג קבלנים ובהתחדשות עירונית.' }
         },
         {
           '@type': 'Question',
-          'name': 'מהו תהליך גישור?',
-          'acceptedAnswer': { '@type': 'Answer', 'text': 'פגישות חסויות ומובנות, שיח מכבד, ניסוח הסכמות וטיוטת הסכם משפטי.' }
+          'name': 'מהו תהליך גישור משפחתי?',
+          'acceptedAnswer': { '@type': 'Answer', 'text': 'הליכי גישור חסויים ומובנים שמטרתם להגיע להסכמות על חלוקת רכוש, משמורת ומזונות, מבלי להיגרר להליכים משפטיים יקרים וממושכים בבתי המשפט או בבית הדין הרבני.' }
         }
       ]
     });
 
-    // Breadcrumbs
+    // Breadcrumbs (ללא שינוי)
     this.upsertJsonLd('home-breadcrumbs', {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

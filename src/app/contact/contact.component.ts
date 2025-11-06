@@ -19,9 +19,9 @@ export class ContactComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // ----- Meta (אחיד, ללא וריאציות "קריית/קרית") -----
-    const pageTitle = 'צור קשר | כהן־קזז – עורך דין משפחה, גירושין, נדל״ן וגישור בקריית גת';
-    const description = 'צרו קשר עם כהן־קזז – משרד עורכי דין בקריית גת: משפחה וגירושין, נדל״ן, גישור ומיסוי מקרקעין. כתובת: חשוון 10 (Publico), קומה 3. טל: 052-670-6744 (חגי), 054-694-9137 (עפרה).';
+    // ----- Meta (שיפור Title ו-Description למיקוד רחב יותר) -----
+    const pageTitle = 'צור קשר | עורכי דין מקרקעין ומשפחה (גירושין) בקריית גת, בית שמש והדרום';
+    const description = 'צרו קשר עם משרד עורכי דין כהן־קזז בקריית גת: ייעוץ משפטי בנושאי דיני משפחה, גירושין, מקרקעין ונדל"ן. כתובת: חשוון 10 (Publico). טל: 052-670-6744.';
     const canonical = 'https://cohenkazaz.law/contact';
     const ogImage = 'https://cohenkazaz.law/assets/og-default.jpg';
 
@@ -54,8 +54,8 @@ export class ContactComponent implements OnInit {
     }
     linkEl.href = canonical;
 
-    // ----- JSON-LD (רק מה שרלוונטי לעמוד "צור קשר") -----
-    // ישות עסקית קנונית עם @id קבוע
+    // ----- JSON-LD (שיפור שירותים ונקודות מגע) -----
+    // ישות עסקית קנונית עם @id קבוע - הרחבת serviceType ו-areaServed
     this.upsertJsonLd('legalservice-org', {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
@@ -72,8 +72,14 @@ export class ContactComponent implements OnInit {
         'addressRegion': 'מחוז הדרום',
         'addressCountry': 'IL'
       },
-      'areaServed': ['קריית גת', 'בית שמש', 'ירושלים', 'הדרום'],
-      'serviceType': ['דיני משפחה', 'גירושין', 'נדל״ן', 'מיסוי מקרקעין', 'גישור'],
+      // הרחבה של אזורי השירות
+      'areaServed': ['קריית גת', 'קרית גת', 'בית שמש', 'ירושלים', 'הדרום', 'אשקלון', 'קרית מלאכי'], 
+      // הרחבת סוגי השירות
+      'serviceType': [
+        "דיני משפחה", "גירושין", "הסכם גירושין בהסכמה", "ירושות", "צוואות",
+        "דיני מקרקעין", "נדלן", "התחדשות עירונית", "עסקאות מכר יד שניה",
+        "ייצוג קבלנים", "ייצוג יזמים", "נכסים מסחריים", "גישור"
+      ],
       'sameAs': ['https://www.facebook.com/profile.php?id=61560157382416'],
       'priceRange': '₪₪',
       'openingHours': 'Su-Th 09:00-18:00',
@@ -83,7 +89,7 @@ export class ContactComponent implements OnInit {
       ]
     });
 
-    // ContactPage שמפנה לישות העסקית הקבועה
+    // ContactPage שמפנה לישות העסקית הקבועה (ללא שינוי)
     this.upsertJsonLd('contact-page', {
       '@context': 'https://schema.org',
       '@type': 'ContactPage',
@@ -93,7 +99,7 @@ export class ContactComponent implements OnInit {
       'mainEntityOfPage': { '@id': 'https://cohenkazaz.law/#org' }
     });
 
-    // Breadcrumbs
+    // Breadcrumbs (ללא שינוי)
     this.upsertJsonLd('contact-breadcrumbs', {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
