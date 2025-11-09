@@ -8,6 +8,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./services.component.css']
 })
 export class ServicesComponent implements OnInit {
+
   constructor(
     private title: Title,
     private meta: Meta,
@@ -15,30 +16,27 @@ export class ServicesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // ----- Meta (אחיד, ללא וריאציות "קריית/קרית") -----
-    const canonical  = 'https://cohenkazaz.law/services';
-    const pageTitle  = 'תחומי התמחות | כהן־קזז – עורך דין משפחה, גירושין, נדל״ן וגישור בקריית גת';
-    const description = 'כהן־קזז – משרד עורכי דין בקריית גת: משפחה וגירושין (משמורת, מזונות, הסכמי ממון, צוואות/ירושות, ייפוי כוח מתמשך), לצד נדל״ן ומיסוי מקרקעין (עסקאות, מס שבח/רכישה, השגות). ליווי אישי ומקצועי.';
-    const ogImage    = 'https://cohenkazaz.law/assets/og-default.jpg';
+    // ----- Meta (חיזוק Title ו-Description למיקוד שירותים ואזור) -----
+    const canonical = 'https://cohenkazaz.law/services';
+    
+    // Title ממוקד: כעת כולל גישור בראש הרשימה
+    const pageTitle = 'תחומי התמחות | עורך דין גישור, משפחה, גירושין, נדל״ן ומיסוי מקרקעין בקריית גת';
+    
+    // Description ממוקד: מפרט את השירותים הליבתיים באזור קרית גת ובית שמש.
+    const description = 'משרד עורכי דין בקריית גת מתמחה: גישור (משפחה/עסקי), דיני משפחה (גירושין, ירושות), מקרקעין ונדל"ן (עסקאות מכר, ייצוג קבלנים). ליווי אישי בקריית גת והדרום.';
+    const ogImage = 'https://cohenkazaz.law/assets/og-default.jpg';
 
     this.title.setTitle(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ name: 'robots', content: 'index,follow' });
 
-    // Open Graph
-    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    // Open Graph ו-Twitter (ממוקדים)
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:url', content: canonical });
     this.meta.updateTag({ property: 'og:image', content: ogImage });
-    this.meta.updateTag({ property: 'og:image:width', content: '1200' });
-    this.meta.updateTag({ property: 'og:image:height', content: '630' });
-
-    // Twitter
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
     this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ name: 'twitter:image', content: ogImage });
 
     // Canonical
     let linkEl = this.doc.querySelector<HTMLLinkElement>("link[rel='canonical']");
@@ -49,61 +47,66 @@ export class ServicesComponent implements OnInit {
     }
     linkEl.href = canonical;
 
-    // ----- JSON-LD -----
-    // ישות עסקית קנונית עם @id קבוע (כמו בעמודים אחרים)
-    this.upsertJsonLd('services-legalservice-org', {
-      '@context': 'https://schema.org',
-      '@type': 'LegalService',
-      '@id': 'https://cohenkazaz.law/#org',
-      'name': 'כהן־קזז – משרד עורכי דין',
-      'url': 'https://cohenkazaz.law/',
-      'image': ogImage,
-      'telephone': '+972-52-6706744',
-      'email': 'office@cohenkazaz.law',
-      'address': {
-        '@type': 'PostalAddress',
-        'streetAddress': 'רח׳ חשוון 10, Publico Complex, קומה 3',
-        'addressLocality': 'קריית גת',
-        'addressRegion': 'מחוז הדרום',
-        'addressCountry': 'IL'
-      },
-      'areaServed': ['קריית גת', 'בית שמש', 'ירושלים', 'הדרום'],
-      'serviceType': ['דיני משפחה', 'גירושין', 'נדל״ן', 'מיסוי מקרקעין', 'גישור'],
-      'sameAs': ['https://www.facebook.com/profile.php?id=61560157382416'],
-      'priceRange': '₪₪',
-      'openingHours': 'Su-Th 09:00-18:00'
+    // ----- JSON-LD (ללא שינוי, כי יצרנו כבר ישות גישור נפרדת שממוקדת לקרית גת) -----
+    
+    // יישות ארגונית קנונית (צריך להתאים ל-HOME)
+    this.upsertJsonLd('legalservice-org', {
+        '@context': 'https://schema.org',
+        '@type': 'LegalService',
+        '@id': 'https://cohenkazaz.law/#org',
+        'name': 'כהן־קזז – משרד עורכי דין',
+        'url': 'https://cohenkazaz.law/',
+        'address': {
+            '@type': 'PostalAddress',
+            'streetAddress': 'רח׳ חשוון 10, Publico Complex, קומה 3',
+            'addressLocality': 'קריית גת',
+            'addressRegion': 'מחוז הדרום',
+            'addressCountry': 'IL'
+        },
+        'areaServed': ['קריית גת', 'קרית גת', 'בית שמש', 'הדרום', 'אשקלון'],
+        'serviceType': ["דיני משפחה", "גירושין", "נדלן", "מיסוי מקרקעין", "גישור"]
     });
 
-    // FAQPage ייעודי לעמוד "תחומי התמחות"
-    this.upsertJsonLd('services-faq', {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      'mainEntity': [
-        {
-          '@type': 'Question',
-          'name': 'מה כולל הליווי שלכם בעסקאות נדל״ן?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'בדיקות מקדמיות, חוזים, מס רכישה/שבח, השגות ורישום זכויות עד הסגירה.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'איך מתחילים תהליך גירושין בצורה נכונה בקריית גת?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'פגישת היכרות, מיפוי סוגיות (ילדים/רכוש/מזונות), בחינת גישור ובניית אסטרטגיה מותאמת.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'מהו תהליך גישור ולמי הוא מתאים?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'תהליך חסוי ומובנה שמטרתו להגיע להסכמות במהירות וביעילות, תוך שמירה על יחסים תקינים.'
-          }
-        }
-      ]
+    // 1. Schema Markup עבור "דיני משפחה וגירושין" בקריית גת
+    this.upsertJsonLd('family-service', {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "דיני משפחה וגירושין",
+      "provider": { "@id": "https://cohenkazaz.law/#org" },
+      "name": "עורך דין משפחה וגירושין בקריית גת",
+      "areaServed": {
+        "@type": "City",
+        "name": "קריית גת"
+      },
+      "description": "ייצוג בהליכי גירושין, מזונות, משמורת, חלוקת רכוש והסכמי ממון בבית הדין הרבני ובתי המשפט לענייני משפחה."
+    });
+
+    // 2. Schema Markup עבור "מקרקעין ונדל"ן"
+    this.upsertJsonLd('realestate-service', {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "דיני מקרקעין ונדלן",
+      "provider": { "@id": "https://cohenkazaz.law/#org" },
+      "name": "עורך דין מקרקעין ונדלן בקריית גת",
+      "areaServed": {
+        "@type": "City",
+        "name": "קריית גת"
+      },
+      "description": "ליווי עסקאות מכר ורכישה, ייצוג קבלנים, מיסוי מקרקעין, מס שבח וטיפול בהתחדשות עירונית באזור הדרום."
+    });
+    
+    // 3. Schema Markup עבור "גישור" (כבר ממוקד חזק)
+    this.upsertJsonLd('mediation-service', {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "גישור משפחתי ועסקי",
+      "provider": { "@id": "https://cohenkazaz.law/#org" },
+      "name": "גישור בקריית גת",
+      "areaServed": {
+        "@type": "City",
+        "name": "קריית גת"
+      },
+      "description": "ניהול הליכי גישור מקצועיים וחסויים להסדרת סכסוכי משפחה וסכסוכים אזרחיים, כולל גישור גירושין."
     });
 
     // Breadcrumbs
