@@ -1,0 +1,66 @@
+<div class="cf" dir="rtl">
+  <h2 id="cf-title" class="cf-title">טופס יצירת קשר לייעוץ משפטי</h2>
+  <p class="cf-intro">
+    מלאו את הפרטים, ובלחיצה על הכפתור תיפתח הודעת וואטסאפ מוכנה למשרד.
+    שדות המסומנים ב-<span class="req" aria-hidden="true">*</span> הם שדות חובה.
+  </p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate aria-labelledby="cf-title">
+
+    <!-- הנחיה לאחר פתיחת וואטסאפ – אין כאן אישור שליחה, כי המשתמש שולח בעצמו -->
+    <div *ngIf="whatsappUrl" #statusBox class="cf-status" role="status" tabindex="-1">
+      <p class="cf-status-title">וואטסאפ נפתח עם הודעה מוכנה.</p>
+      <p>
+        הפנייה תגיע למשרד רק לאחר שתלחצו על <strong>שליחה</strong> בוואטסאפ.
+        וואטסאפ לא נפתח? <a [href]="whatsappUrl" target="_blank" rel="noopener">לחצו כאן לפתיחה</a>.
+      </p>
+    </div>
+
+    <div class="cf-grid">
+      <div class="cf-field">
+        <label for="cf-name">שם מלא <span class="req" aria-hidden="true">*</span></label>
+        <input id="cf-name" type="text" formControlName="name" autocomplete="name" maxlength="100" required
+               [attr.aria-invalid]="showError('name')" [attr.aria-describedby]="showError('name') ? 'cf-name-err' : null">
+        <p *ngIf="showError('name')" id="cf-name-err" class="cf-err">{{ errorText('name') }}</p>
+      </div>
+
+      <div class="cf-field">
+        <label for="cf-phone">טלפון <span class="req" aria-hidden="true">*</span></label>
+        <input id="cf-phone" type="tel" dir="ltr" formControlName="phone" autocomplete="tel" inputmode="tel" maxlength="20" required
+               [attr.aria-invalid]="showError('phone')" [attr.aria-describedby]="showError('phone') ? 'cf-phone-err' : null">
+        <p *ngIf="showError('phone')" id="cf-phone-err" class="cf-err">{{ errorText('phone') }}</p>
+      </div>
+
+      <div class="cf-field">
+        <label for="cf-email">דוא״ל <span class="opt">(לא חובה)</span></label>
+        <input id="cf-email" type="email" dir="ltr" formControlName="email" autocomplete="email" maxlength="150"
+               [attr.aria-invalid]="showError('email')" [attr.aria-describedby]="showError('email') ? 'cf-email-err' : null">
+        <p *ngIf="showError('email')" id="cf-email-err" class="cf-err">{{ errorText('email') }}</p>
+      </div>
+
+      <div class="cf-field">
+        <label for="cf-topic">נושא הפנייה <span class="opt">(לא חובה)</span></label>
+        <select id="cf-topic" formControlName="topic">
+          <option value="">בחרו נושא</option>
+          <option *ngFor="let t of topics" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+
+      <div class="cf-field cf-wide">
+        <label for="cf-message">הודעה <span class="req" aria-hidden="true">*</span></label>
+        <textarea id="cf-message" formControlName="message" rows="5" [attr.maxlength]="messageMax" required
+                  [attr.aria-invalid]="showError('message')"
+                  [attr.aria-describedby]="'cf-privacy' + (showError('message') ? ' cf-message-err' : '')"></textarea>
+        <p *ngIf="showError('message')" id="cf-message-err" class="cf-err">{{ errorText('message') }}</p>
+      </div>
+    </div>
+
+    <p id="cf-privacy" class="cf-privacy">
+      <strong>שימו לב:</strong> אין לכלול בטופס מידע משפטי רגיש, פרטים מזהים של צדדים שלישיים או מסמכים.
+      פרטים אלה יימסרו בשיחה עם עורך הדין. הפרטים אינם נשלחים מהאתר – הם מועברים להודעת וואטסאפ,
+      שתוכלו לעיין בה ולשלוח אותה בעצמכם.
+    </p>
+
+    <button type="submit" class="ck-btn ck-btn--gold cf-submit">שליחת פנייה בוואטסאפ</button>
+  </form>
+</div>

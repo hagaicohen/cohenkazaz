@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -9,12 +8,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  contactForm!: FormGroup;
-
   constructor(
     private title: Title,
     private meta: Meta,
-    private fb: FormBuilder,
     @Inject(DOCUMENT) private doc: Document
   ) {}
 
@@ -109,25 +105,11 @@ export class ContactComponent implements OnInit {
       ]
     });
 
-    // ----- Form -----
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', [Validators.email]],
-      message: ['', Validators.required]
-    });
   }
 
   sendWhatsApp(phone: string) {
     const text = encodeURIComponent('שלום, אשמח לשוחח בקשר לייעוץ משפטי.');
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank', 'noopener,noreferrer');
-  }
-
-  onSubmit() {
-    if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
-      // כאן תוכל להחליף בשליחה בפועל (HTTP) לשרת שלך
-    }
   }
 
   private upsertJsonLd(id: string, obj: any) {

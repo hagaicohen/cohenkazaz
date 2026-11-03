@@ -1,41 +1,63 @@
-.home-content {
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  direction: rtl; /* כיוון הטקסט מימין לשמאל */
-  text-align: right; /* יישור הטקסט לימין */
+.home{background:var(--ck-warm);color:var(--ck-text);font-size:1.0625rem;line-height:1.7}
+
+/* Hero */
+.hero{position:relative;display:flex;align-items:center;min-height:clamp(460px,72vh,660px);overflow:hidden;color:#fff}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:hero-zoom 1.8s var(--ck-ease) both}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(270deg,rgba(15,37,55,.88) 0%,rgba(15,37,55,.66) 55%,rgba(15,37,55,.38) 100%)}
+.hero-inner{position:relative;padding-top:56px;padding-bottom:64px;animation:rise .9s var(--ck-ease) .15s both}
+.hero-eyebrow{margin:0 0 18px;color:var(--ck-gold);font-weight:500;letter-spacing:.02em}
+.hero-eyebrow span{white-space:nowrap}
+.hero-title{max-width:17ch;margin:0;font-size:clamp(2rem,1.2rem + 3.6vw,3.25rem);font-weight:700;line-height:1.2;text-wrap:balance}
+.hero-title::after{content:'';display:block;width:64px;height:2px;margin-top:24px;background:var(--ck-gold)}
+.hero-sub{max-width:52ch;margin:22px 0 34px;font-size:1.125rem;font-weight:400;line-height:1.7;color:rgba(255,255,255,.9)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Intro */
+.intro{padding-top:88px;padding-bottom:48px;text-align:center}
+.kicker{color:var(--ck-gold-text);font-weight:500;letter-spacing:.02em}
+.section-title{margin:10px auto 20px;font-size:clamp(1.6rem,1.1rem + 2vw,2.25rem);font-weight:700;color:var(--ck-navy);line-height:1.3;text-wrap:balance}
+.intro-text{max-width:68ch;margin:0 auto;font-size:1.125rem;line-height:1.7;color:var(--ck-gray)}
+
+/* Practice cards */
+.cards{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:0;padding:0 0 72px}
+.card{display:flex;flex-direction:column;padding:36px 32px 30px;background:#fff;border:1px solid var(--ck-line);border-top:3px solid var(--ck-gold);border-radius:var(--ck-radius);transition:transform .35s var(--ck-ease),box-shadow .35s var(--ck-ease)}
+.card:hover{transform:translateY(-4px);box-shadow:var(--ck-shadow)}
+.card-icon{display:inline-grid;place-items:center;width:56px;height:56px;margin-bottom:22px;border-radius:50%;background:var(--ck-warm-2);color:var(--ck-gold-deep)}
+.card-title{margin:0 0 12px;font-size:1.375rem;font-weight:600;line-height:1.35;color:var(--ck-navy);text-wrap:balance}
+.card-text{flex-grow:1;margin:0 0 22px;font-size:1.0625rem;line-height:1.7;color:var(--ck-gray)}
+.card-link{align-self:flex-start;font-weight:500;color:var(--ck-navy);text-decoration:none;border-bottom:1px solid var(--ck-gold);padding-bottom:2px}
+.card-link .arrow{display:inline-block;margin-right:6px;transition:transform .3s var(--ck-ease)}
+.card-link:hover .arrow{transform:translateX(-4px)}
+
+/* Detailed content */
+.details-wrap{padding-bottom:80px}
+/* CTA band */
+.cta-band{background:var(--ck-navy);color:#fff}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;padding-top:64px;padding-bottom:64px}
+.cta-title{margin:0 0 12px;font-size:clamp(1.4rem,1rem + 1.6vw,1.875rem);font-weight:600;line-height:1.35;text-wrap:balance}
+.cta-text{max-width:62ch;margin:0;font-size:1.0625rem;line-height:1.7;color:rgba(255,255,255,.8)}
+.cta-actions{display:flex;flex-direction:column;gap:12px;flex-shrink:0}
+
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes hero-zoom{from{transform:scale(1.05)}to{transform:scale(1)}}
+
+@media (max-width:960px){
+  .cards{grid-template-columns:1fr;max-width:620px;margin:0 auto}
+  .cta-inner{flex-direction:column;align-items:flex-start}
+  .cta-actions{flex-direction:row;flex-wrap:wrap}
 }
 
-.home-content h1 {
-  font-size: 2em;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.home-content p {
-  font-size: 1.2em;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  text-align: justify; /* יישור טקסט */
-}
-
-.home-content h2 {
-  font-size: 1.5em;
-  color: #444;
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.home-content ul {
-  list-style-type: disc;
-  margin-right: 20px; /* מיקום הרשימה */
-}
-
-.home-content ul li {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 10px;
-  text-align: justify; /* יישור טקסט */
+@media (max-width:768px){
+  .hero{min-height:auto}
+  .hero-overlay{background:rgba(15,37,55,.74)}
+  .hero-inner{padding-top:56px;padding-bottom:56px}
+  .hero-actions .ck-btn{flex:1 1 100%}
+  .intro{padding-top:56px;padding-bottom:32px}
+  .intro-text{font-size:1.0625rem}
+  .card{padding:28px 24px 24px}
+  .cards{padding-bottom:48px}
+  .details-wrap{padding-bottom:56px}
+  .cta-inner{padding-top:48px;padding-bottom:48px}
+  .cta-actions{width:100%}
+  .cta-actions .ck-btn{flex:1 1 100%}
 }

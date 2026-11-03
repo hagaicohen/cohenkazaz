@@ -1,0 +1,33 @@
+/* צבעי הכחול שבתמונות עצמן, כדי שהמעבר לרקע יהיה חלק */
+.hero{--navy-d:#08324F;--navy-m:#003052;position:relative;overflow:hidden;color:#fff;background:var(--navy-d);height:clamp(520px,50.8vw,820px)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:15% 40%}
+/* הבטחת ניגודיות לטקסט בצד ימין גם כשהתמונה נחתכת ברוחבים בינוניים */
+.hero-shade{position:absolute;inset:0;background:linear-gradient(to left,rgba(8,50,79,.92) 0%,rgba(8,50,79,.7) 30%,rgba(8,50,79,0) 46%)}
+
+/* קבוצה אחת: כותרת, תחומים וכפתורים – ממורכזת אנכית בשטח הכחול (מעל קו הזהב) */
+.hero-content{position:absolute;top:47%;right:max(3%,calc((100% - 1160px) / 2));width:min(36%,520px);transform:translateY(-50%);text-align:center;animation:rise .9s var(--ck-ease) .1s both}
+.hero-title{margin:0;font-size:clamp(2.125rem,4.2vw,3.75rem);font-weight:700;line-height:1.2;text-wrap:balance}
+.hero-areas{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 0;margin:18px 0 0;padding:0;list-style:none;font-size:clamp(1.0625rem,1.5vw,1.3rem);font-weight:500;color:var(--ck-gold)}
+.hero-areas li+li::before{content:'|';margin:0 .7em;color:rgba(196,170,122,.6)}
+
+.hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:clamp(26px,2.4vw,36px)}
+.hero-actions .ck-btn{box-sizing:border-box;flex:0 0 220px;gap:10px;min-height:54px;padding:0 20px;font-size:1.125rem;white-space:nowrap}
+
+/* טאבלט: התמונה רחבה מהמסך – מזיזים אותה שמאלה כדי לפנות מקום לטקסט */
+@media (min-width:769px) and (max-width:1000px){.hero-img{object-position:45% 40%}.hero-actions .ck-btn{flex-basis:180px}}
+
+@keyframes rise{from{opacity:0;transform:translateY(calc(-50% + 16px))}to{opacity:1;transform:translateY(-50%)}}
+
+/* מובייל: תמונה ייעודית במלואה (בלי חיתוך פנים), והטקסט בשטח הכחול שמתחת לקו הזהב */
+@media (max-width:768px){
+  .hero{height:auto;background:var(--navy-m);padding-bottom:32px}
+  .hero-img{position:static;display:block;height:auto;aspect-ratio:1086/1448}
+  .hero-shade{display:none}
+  .hero-content{position:relative;top:auto;right:auto;width:auto;transform:none;margin-top:-46vw;padding:0 20px;animation-name:rise-m}
+  .hero-title{font-size:clamp(2rem,9.4vw,2.5rem)}
+  .hero-areas{flex-wrap:nowrap;white-space:nowrap;margin-top:12px;font-size:clamp(.875rem,4.3vw,1.0625rem)}
+  .hero-areas li+li::before{margin:0 .5em}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:12px;max-width:420px;margin:24px auto 0}
+  .hero-actions .ck-btn{flex:none}
+}
+@keyframes rise-m{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}

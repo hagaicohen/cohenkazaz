@@ -1,18 +1,35 @@
-<nav class="navbar">
-  <img src="assets/images/logo2.jpg" 
-       alt="Logo" 
-       class="nav-logo" 
-       style="border-radius: 50%;"
-       [ngStyle]="{'visibility': menuOpen ? 'visible' :'visible'}">
-  <ul [ngClass]="{'nav-links': true, 'nav-active': menuOpen}" style="margin-right: 160px;">
-      <li><a href="#" (click)="onSectionChange('home')">בית</a></li>
-      <li><a href="#" (click)="onSectionChange('about')">אודות</a></li>
-      <li><a href="#" (click)="onSectionChange('services')">שירותים</a></li>
-      <li><a href="#" (click)="onSectionChange('contact')">צור קשר</a></li>
-  </ul>
-  <div class="burger" (click)="toggleBurger()" [class.toggle]="menuOpen">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
+<header class="site-header" [class.scrolled]="scrolled" [class.menu-open]="menuOpen" dir="rtl">
+  <div class="header-inner">
+    <a href="/" class="brand" (click)="onSectionChange('home', $event)" aria-label="כהן־קזז ושות׳ – לדף הבית">
+      <span class="logo-frame">
+        <img src="assets/images/logo2.jpg" alt="לוגו כהן־קזז ושות׳" class="nav-logo" width="72" height="72">
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">כהן־קזז ושות׳</span>
+        <span class="brand-sub">משרד עורכי דין וגישור</span>
+      </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="ניווט ראשי">
+      <ul id="primary-menu" class="nav-links" [class.nav-active]="menuOpen">
+        <li *ngFor="let link of links">
+          <a href="#" (click)="onSectionChange(link.id, $event)"
+             [class.active]="activeSection === link.id"
+             [attr.aria-current]="activeSection === link.id ? 'page' : null">{{ link.label }}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <a class="ck-btn ck-btn--gold header-cta" href="tel:+972526706744" aria-label="התקשרו למשרד: 052-670-6744">
+      052-670-6744
+    </a>
+
+    <button type="button" class="burger" (click)="toggleBurger()" [class.toggle]="menuOpen"
+            aria-controls="primary-menu" [attr.aria-expanded]="menuOpen"
+            [attr.aria-label]="menuOpen ? 'סגירת תפריט' : 'פתיחת תפריט'">
+      <span class="line1"></span>
+      <span class="line2"></span>
+      <span class="line3"></span>
+    </button>
   </div>
-</nav>
+</header>

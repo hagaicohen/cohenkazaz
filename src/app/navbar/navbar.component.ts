@@ -1,27 +1,52 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, NgZone, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit, OnDestroy {
+  @Input() activeSection: string = 'home'; // החלק הפעיל – מגיע מ-AppComponent
   @Output() sectionChange = new EventEmitter<string>();
-  activeSection: string = 'home'; // הוספת משתנה לעקוב אחר החלק הפעיל
   menuOpen: boolean = false;
+  scrolled: boolean = false;
 
-  onSectionChange(section: string) {
-    this.activeSection = section; // עדכון החלק הפעיל
+  readonly links = [
+    { id: 'home', label: 'בית' },
+    { id: 'about', label: 'אודות' },
+    { id: 'services', label: 'שירותים' },
+    { id: 'contact', label: 'צור קשר' }
+  ];
+
+  private readonly onScroll = () => {
+    const scrolled = window.scrollY > 24;
+    if (scrolled !== this.scrolled) {
+      // נכנסים ל-Angular רק כשהמצב משתנה, כדי לא להריץ change detection על כל גלילה
+      this.zone.run(() => this.scrolled = scrolled);
+    }
+  };
+
+  constructor(private zone: NgZone) {}
+
+  ngOnInit() {
+    this.zone.runOutsideAngular(() => {
+      window.addEventListener('scroll', this.onScroll, { passive: true });
+    });
+    this.onScroll();
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  onSectionChange(section: string, event?: Event) {
+    event?.preventDefault();
+    this.activeSection = section;
     this.sectionChange.emit(section);
     this.menuOpen = false;
   }
 
   toggleBurger() {
     this.menuOpen = !this.menuOpen;
-    const burger = document.querySelector('.burger') as HTMLElement;
-    const nav = document.querySelector('.nav-links') as HTMLElement;
-
-    nav.classList.toggle('nav-active');
-    burger.classList.toggle('toggle');
   }
 }

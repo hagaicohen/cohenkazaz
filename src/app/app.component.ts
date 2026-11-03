@@ -19,11 +19,24 @@ export class AppComponent implements AfterViewInit {
     this.addFadeInEffect();
   }
 
-  onSectionChange(section: string) {
+  /**
+   * section יכול לכלול עוגן אופציונלי, למשל 'services#family-law',
+   * כדי לגלול ישירות לתת-נושא בתוך העמוד.
+   */
+  onSectionChange(target: string) {
+    const [section, anchor] = target.split('#');
     this.currentSection = section;
 
     if (!this.isMobile()) {
-      setTimeout(() => this.addFadeInEffect(), 0);
+      setTimeout(() => {
+        this.addFadeInEffect();
+        const anchorEl = anchor ? document.getElementById(anchor) : null;
+        if (anchorEl) {
+          this.scrollToElement(anchorEl);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 0);
     } else {
 
       let element: ElementRef | undefined;
@@ -46,12 +59,20 @@ export class AppComponent implements AfterViewInit {
       if (element && element.nativeElement) {
         // Use setTimeout to delay scroll to ensure element is ready
         setTimeout(() => {
-          element!.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const anchorEl = anchor ? document.getElementById(anchor) : null;
+          this.scrollToElement(anchorEl || element!.nativeElement);
         }, 100); // Adjust delay timing as needed
       } else {
           console.warn(`Element for section ${section} is not defined or does not have nativeElement.`);
       }
     }
+  }
+
+  /** גלילה לאלמנט תוך התחשבות בגובה הכותרת הקבועה */
+  private scrollToElement(el: HTMLElement) {
+    const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
   }
 
   private addFadeInEffect() {

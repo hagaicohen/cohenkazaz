@@ -1,32 +1,41 @@
-<app-navbar (sectionChange)="onSectionChange($event)"></app-navbar>
-<div class="cover-image"></div>
+<a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
 
-<ng-container *ngIf="!isMobile()">
-  <section *ngIf="currentSection === 'home'" class="fade-in">
-    <app-home></app-home>
-  </section>
-  <section *ngIf="currentSection === 'about'" class="fade-in">
-    <app-about></app-about>
-  </section>
-  <section *ngIf="currentSection === 'services'" class="fade-in">
-    <app-services></app-services>
-  </section>
-  <section *ngIf="currentSection === 'contact'" class="fade-in">
-    <app-contact></app-contact>
-  </section>
-</ng-container>
+<app-navbar [activeSection]="currentSection" (sectionChange)="onSectionChange($event)"></app-navbar>
 
-<ng-container *ngIf="isMobile()">
-  <section id="home" #homeSection>
-    <app-home></app-home>
-  </section>
-  <section id="about" #aboutSection>
-    <app-about></app-about>
-  </section>
-  <section id="services" #servicesSection>
-    <app-services></app-services>
-  </section>
-  <section id="contact" #contactSection>
-    <app-contact></app-contact>
-  </section>
-</ng-container>
+<main id="main-content" class="site-main" tabindex="-1">
+  <ng-container *ngIf="!isMobile()">
+    <section *ngIf="currentSection === 'home'" class="fade-in home-section">
+      <app-home (navigate)="onSectionChange($event)"></app-home>
+    </section>
+
+    <div *ngIf="currentSection !== 'home'" class="page-shell">
+      <div class="cover-image"></div>
+      <section *ngIf="currentSection === 'about'" class="fade-in">
+        <app-about></app-about>
+      </section>
+      <section *ngIf="currentSection === 'services'" class="fade-in">
+        <app-services></app-services>
+      </section>
+      <section *ngIf="currentSection === 'contact'" class="fade-in">
+        <app-contact></app-contact>
+      </section>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="isMobile()">
+    <section id="home" #homeSection class="home-section">
+      <app-home (navigate)="onSectionChange($event)"></app-home>
+    </section>
+    <div class="page-shell">
+      <section id="about" #aboutSection>
+        <app-about></app-about>
+      </section>
+      <section id="services" #servicesSection>
+        <app-services></app-services>
+      </section>
+      <section id="contact" #contactSection>
+        <app-contact></app-contact>
+      </section>
+    </div>
+  </ng-container>
+</main>

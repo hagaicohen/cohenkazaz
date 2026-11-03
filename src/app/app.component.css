@@ -1,0 +1,6 @@
+/* מפנה מקום לכותרת הקבועה – הלוגו והניווט לעולם אינם מסתירים את התוכן */
+.site-main {
+  display: block;
+  padding-top: var(--ck-header-h);
+  outline: none;
+}
