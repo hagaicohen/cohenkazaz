@@ -12,13 +12,14 @@
   --ck-text: #1E2A36;
   --ck-font: 'Heebo', 'Segoe UI', Arial, sans-serif;
   --ck-header-h: 84px;
+  --ck-header-h-scrolled: 66px; /* הכותרת המכווצת אחרי גלילה – משמש גם לחישוב הגלילה לחלקים */
   --ck-radius: 10px;
   --ck-shadow: 0 10px 30px rgba(15, 37, 55, 0.08);
   --ck-ease: cubic-bezier(.2, .7, .2, 1);
 }
 
 @media (max-width: 768px) {
-  :root { --ck-header-h: 68px; }
+  :root { --ck-header-h: 68px; --ck-header-h-scrolled: 58px; }
 }
 
 /* Global styles */

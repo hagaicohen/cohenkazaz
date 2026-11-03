@@ -9,7 +9,7 @@
 }
 
 .site-header.scrolled {
-  height: calc(var(--ck-header-h) - 18px);
+  height: var(--ck-header-h-scrolled);
   box-shadow: 0 6px 24px rgba(15, 37, 55, .08);
 }
 
@@ -152,7 +152,6 @@
 
   .logo-frame { width: 50px; height: 50px; }
   .scrolled .logo-frame { width: 42px; height: 42px; }
-  .site-header.scrolled { height: calc(var(--ck-header-h) - 10px); }
   .brand-name { font-size: 1.2rem; }
 
   .burger { display: block; }

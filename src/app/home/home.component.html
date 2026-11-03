@@ -5,8 +5,12 @@
 
   <!-- ===== Hero: תמונת המשרד (office3.jpg) – ברירת מחדל ===== -->
   <div *ngIf="heroVariant === 'office'" class="hero">
-    <img class="hero-img" src="assets/images/office3.jpg"
-         alt="חדר הישיבות במשרד כהן־קזז ושות׳ בקריית גת" width="1600" height="1067">
+    <picture>
+      <source type="image/webp" sizes="100vw"
+              srcset="assets/images/office3-800.webp 800w, assets/images/office3-1600.webp 1600w">
+      <img class="hero-img" src="assets/images/office3.jpg" fetchpriority="high"
+           alt="חדר הישיבות במשרד כהן־קזז ושות׳ בקריית גת" width="1600" height="1067">
+    </picture>
     <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="ck-container hero-inner">
@@ -17,7 +21,7 @@
         משרדנו בקריית גת משרת לקוחות פרטיים ועסקיים.
       </p>
       <div class="hero-actions">
-        <a class="ck-btn ck-btn--gold" href="#contact" (click)="go('contact', $event)">לתיאום פגישת ייעוץ</a>
+        <a class="ck-btn ck-btn--gold" href="/contact" (click)="go('contact', $event)">לתיאום פגישת ייעוץ</a>
         <a class="ck-btn ck-btn--ghost" href="tel:+972526706744" aria-label="התקשרו למשרד: 052-670-6744">
           <span dir="ltr">052-670-6744</span>
         </a>
@@ -49,7 +53,7 @@
         </span>
         <h3 class="card-title">{{ area.title }}</h3>
         <p class="card-text">{{ area.text }}</p>
-        <a class="card-link" [href]="'#' + area.anchor" (click)="go('services#' + area.anchor, $event)">
+        <a class="card-link" [href]="'/services#' + area.anchor" (click)="go('services#' + area.anchor, $event)">
           למידע נוסף<span class="visually-hidden"> על {{ area.title }}</span>
           <span class="arrow" aria-hidden="true">←</span>
         </a>
@@ -141,7 +145,7 @@
         </p>
       </div>
       <div class="cta-actions">
-        <a class="ck-btn ck-btn--gold" href="#contact" (click)="go('contact', $event)">לפרטי התקשרות</a>
+        <a class="ck-btn ck-btn--gold" href="/contact" (click)="go('contact', $event)">לפרטי התקשרות</a>
         <a class="ck-btn ck-btn--ghost" href="mailto:office@cohenkazaz.law">office@cohenkazaz.law</a>
       </div>
     </div>
